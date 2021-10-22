@@ -1,0 +1,10 @@
+@import "../shared";
+
+.list {
+  @include list;
+  --li-before-content: "🐶";
+}
+
+.button {
+  margin-left: 1rem;
+}
