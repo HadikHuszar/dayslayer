@@ -22,8 +22,10 @@ jobs:
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
           usedocker: true
           docker_build_args: |
-            REACT_APP_TITLE
-            REACT_APP_SUBTITLE
+            REACT_APP_AUTH0_DOMAIN
+            REACT_APP_AUTH0_CLIENT_ID
+            REACT_APP_AUTH0_AUDIENCE
         env:
-          REACT_APP_TITLE: ${{ secrets.REACT_APP_TITLE }}
-          REACT_APP_SUBTITLE: ${{ secrets.REACT_APP_SUBTITLE }}
+          REACT_APP_AUTH0_DOMAIN: ${{ secrets.REACT_APP_AUTH0_DOMAIN }}
+          REACT_APP_AUTH0_CLIENT_ID: ${{ secrets.REACT_APP_AUTH0_CLIENT_ID }}
+          REACT_APP_AUTH0_AUDIENCE: ${{ secrets.REACT_APP_AUTH0_AUDIENCE }}
