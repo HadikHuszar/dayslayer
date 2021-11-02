@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import gcal from "react-google-calendar-api";
+// import gcal from "react-google-calendar-api";
 import { Routes, Route } from "react-router-dom";
 
 import Nav from "../Nav";
@@ -35,35 +35,6 @@ const App = () => {
       apiClient.addOrUpdateUser(user);
     }
   }, [isAuthenticated, user, loading, apiClient]);
-
-  // React.useEffect(() => {
-  //   if (isAuthenticated) {
-  //     (async () => {
-  //       try {
-  //         const accessToken = await getAccessTokenSilently();
-  //         function loadClient() {
-  //           gapi.client.setApiKey(accessToken);
-  //           return gapi.client
-  //             .load(
-  //               "https://content.googleapis.com/discovery/v1/apis/calendar/v3/rest",
-  //             )
-  //             .then(
-  //               function () {
-  //                 console.log("GAPI client loaded for API");
-  //               },
-  //               function (err) {
-  //                 console.error("Error loading GAPI client for API", err);
-  //               },
-  //             );
-  //         }
-
-  //         loadClient();
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
-  //     })();
-  //   }
-  // }, [isAuthenticated, getAccessTokenSilently]);
 
   return (
     <>
@@ -125,15 +96,6 @@ const Home = () => {
       });
     }
   }, [isAuthenticated]);
-
-  // React.useEffect(() => {
-  //   gcal.onLoad(() => {
-  //     setIsGcalAuthenticated(
-  //       gcal.gapi.auth2.getAuthInstance().isSignedIn.get(),
-  //     );
-  //     gcal.listenSign((sign) => setIsGcalAuthenticated(sign));
-  //   });
-  // }, []);
 
   if (!isAuthenticated) {
     return <h1>Please log in</h1>; /// put something else

@@ -1,10 +1,12 @@
 import * as React from "react";
 
-import gcal from "react-google-calendar-api";
+import Moment from "react-moment";
 import { Routes, Route } from "react-router-dom";
 
+// import calendarJson from "../Calendar";
 import Nav from "../Nav";
 import Tasks from "../Tasks";
+import Team from "../Team";
 import useApi from "../auth/useApi";
 import useAuth0 from "../auth/useAuth0";
 import { Protected } from "../auth/widgets";
@@ -14,21 +16,6 @@ import "./styles.app.scss";
 const Events = () => {
   const { isAuthenticated, user } = useAuth0();
   const [events, setEvents] = React.useState([]);
-
-  // React.useEffect(() => {
-  //   // gapi.client.calendar.events
-  //   gcal.onLoad(() => {
-  //     gcal
-  //       .listUpcomingEvents(10)
-  //       .then((data) => {
-  //         console.log(data);
-  //         // setEvents(items);
-  //       })
-  //       .catch((err) => console.log(err));
-  //     // console.log("Response", response);
-  //     console.log("Response", events);
-  //   });
-  // }, [events, isAuthenticated]);
 
   return events.length === 0 ? (
     <h1>No Events</h1>
@@ -51,34 +38,7 @@ const App = () => {
     }
   }, [isAuthenticated, user, loading, apiClient]);
 
-  // React.useEffect(() => {
-  //   if (isAuthenticated) {
-  //     (async () => {
-  //       try {
-  //         const accessToken = await getAccessTokenSilently();
-  //         function loadClient() {
-  //           gapi.client.setApiKey(accessToken);
-  //           return gapi.client
-  //             .load(
-  //               "https://content.googleapis.com/discovery/v1/apis/calendar/v3/rest",
-  //             )
-  //             .then(
-  //               function () {
-  //                 console.log("GAPI client loaded for API");
-  //               },
-  //               function (err) {
-  //                 console.error("Error loading GAPI client for API", err);
-  //               },
-  //             );
-  //         }
-
-  //         loadClient();
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
-  //     })();
-  //   }
-  // }, [isAuthenticated, getAccessTokenSilently]);
+  // console.log(calendarJson);
 
   return (
     <>
@@ -89,6 +49,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Protected component={Tasks} />} />
+          <Route path="/team" element={<Team />} />
         </Routes>
       </main>
       <footer>
@@ -101,31 +62,43 @@ const App = () => {
 const Home = () => {
   const { isAuthenticated, user, getAccessTokenSilently, getIdTokenClaims } =
     useAuth0();
-  const [isGcalAuthenticated, setIsGcalAuthenticated] = React.useState(
-    gcal.sign,
-  );
 
   React.useEffect(() => {
     if (isAuthenticated) {
-      getAccessTokenSilently().then((initialAuth0AccessToken) => {
-        console.log(initialAuth0AccessToken);
+      console.log("user information", user);
 
-        // make a call to Auth0 Management API to get full user data
+      //     function listUpcomingEvents() {
+      //       gapi.client.calendar.events
+      //         .list({
+      //           calendarId: "primary",
+      //           timeMin: new Date().toISOString(),
+      //           showDeleted: false,
+      //           singleEvents: true,
+      //           maxResults: 10,
+      //           orderBy: "startTime",
+      //         })
+      //         .then(function (response) {
+      //           var events = response.result.items;
+      //         });
+      //     }
 
-        // extract the Google API access token from the identities array
-        // use this next token to then make a fetch call below , to calendars.
+      // return listUpcomingEvents();
 
-        // fetch(
-        //   "https://content.googleapis.com/calendar/v3/calendars/primary/events",
-        //   {
-        //     headers: {
-        //       Authorization: `Bearer ${googleApiAccessToken}`,
-        //     },
-        //   },
-        // )
-        //   .then((data) => console.log(data))
-        //   .catch((err) => console.log(err));
-      });
+      ///////////////////// events /////////////
+
+      // const Events = () => {
+      //   const [events, setEvents] = React.useState([]);
+
+      //   return events.length === 0 ? (
+      //     "nothing here"
+      //   ) : (
+      //     <ul>
+      //       {events.map((event) => (
+      //         <li key={event.id}>{event.summary}</li>
+      //       ))}
+      //     </ul>
+      //   );
+      // });
     }
   }, [isAuthenticated]);
 
@@ -141,7 +114,7 @@ const Home = () => {
         Hello, {user.given_name} !
       </span>
       {/* {isAuthenticated ? "<Tasks />" : null} */}
-      {isGcalAuthenticated ? <Events /> : <h1>is Not Gcal Authenticated</h1>}
+      {/* {isGcalAuthenticated ? <Events /> : <h1>is Not Gcal Authenticated</h1>} */}
       {/* {isGcalAuthenticated ? <execute /> : <h1>is Not Gcal Authenticated</h1>} */}
     </>
   );
