@@ -2,7 +2,7 @@ import * as React from "react";
 
 import useApi from "../auth/useApi";
 
-import styles from "./styles.module.scss";
+import styles from "./styles.tasks.scss";
 
 const Tasks = () => {
   const [tasks, setTasks] = React.useState([]);
@@ -19,10 +19,27 @@ const Tasks = () => {
   }, [loading, loadTasks]);
 
   return loading ? null : (
-    <section>
-      <TaskList {...{ tasks }} />
-      <AddTask {...{ addTask }} />
-    </section>
+    <>
+      <section className="workspace-container">
+        <span className="workspace-title">This is your input...</span>
+        <span id="workspace-toolslist">
+          Here are your tools:
+          <ol>
+            <li>Team Calendar</li>
+            <li>Mentor Calendar</li>
+            <li>Quote Generator</li>
+            <li>Daily Meditation Guide Generator</li>
+            <li>Anything Else? Hmmm....</li>
+          </ol>
+        </span>
+      </section>
+
+      <section className="tasks-container">
+        <span className="output-title">This is your output...</span>
+        <TaskList {...{ tasks }} />
+        <AddTask {...{ addTask }} />
+      </section>
+    </>
   );
 };
 
@@ -50,7 +67,7 @@ const AddTask = ({ addTask }) => {
   return (
     <form {...{ onSubmit }}>
       <label>
-        New task:{" "}
+        New Item:
         <input onChange={(e) => setTask(e.currentTarget.value)} value={task} />
       </label>
       <button disabled={!canAdd} className={styles.button}>

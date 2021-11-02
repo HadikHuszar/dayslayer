@@ -4,6 +4,7 @@ import { parseFullName } from "parse-full-name";
 const useAuth0 = () => {
   const { isAuthenticated, user: _user, ...rest } = useBaseAuth0();
   const user = isAuthenticated ? decorateUser(_user) : _user;
+
   return { isAuthenticated, user, ...rest };
 };
 

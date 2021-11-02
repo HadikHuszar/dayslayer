@@ -15,21 +15,6 @@ const Events = () => {
   const { isAuthenticated, user } = useAuth0();
   const [events, setEvents] = React.useState([]);
 
-  // React.useEffect(() => {
-  //   // gapi.client.calendar.events
-  //   gcal.onLoad(() => {
-  //     gcal
-  //       .listUpcomingEvents(10)
-  //       .then((data) => {
-  //         console.log(data);
-  //         // setEvents(items);
-  //       })
-  //       .catch((err) => console.log(err));
-  //     // console.log("Response", response);
-  //     console.log("Response", events);
-  //   });
-  // }, [events, isAuthenticated]);
-
   return events.length === 0 ? (
     <h1>No Events</h1>
   ) : (
@@ -108,11 +93,23 @@ const Home = () => {
   React.useEffect(() => {
     if (isAuthenticated) {
       getAccessTokenSilently().then((initialAuth0AccessToken) => {
-        console.log(initialAuth0AccessToken);
+        console.log("initialAuth0AccessToken:  ", initialAuth0AccessToken);
 
         // make a call to Auth0 Management API to get full user data
+        fetch(
+          //   "https:/dev-pgwlvw0x.us.auth0.com/api/v2/users/google-oauth2|112604842037227885586",
+          `https:/dev-pgwlvw0x.us.auth0.com/api/v2/users/${user}`,
+          {
+            headers: {
+              Authorization: `Bearer ${initialAuth0AccessToken}`,
+            },
+          },
+        )
+          .then((data) => console.log("full user data:  ", data))
+          .catch((err) => console.log(err));
 
         // extract the Google API access token from the identities array
+
         // use this next token to then make a fetch call below , to calendars.
 
         // fetch(
@@ -128,6 +125,15 @@ const Home = () => {
       });
     }
   }, [isAuthenticated]);
+
+  // React.useEffect(() => {
+  //   gcal.onLoad(() => {
+  //     setIsGcalAuthenticated(
+  //       gcal.gapi.auth2.getAuthInstance().isSignedIn.get(),
+  //     );
+  //     gcal.listenSign((sign) => setIsGcalAuthenticated(sign));
+  //   });
+  // }, []);
 
   if (!isAuthenticated) {
     return <h1>Please log in</h1>; /// put something else

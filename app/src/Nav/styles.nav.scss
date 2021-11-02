@@ -1,0 +1,45 @@
+// .nav {
+//   a[class="active"] {
+//     background-color: darkorange;
+//     color: white;
+//     text-decoration: none;
+//   }
+
+//   // img {
+//   //   max-height: 150px;
+//   //   max-width: 50px;
+//   // }
+// }
+nav {
+  a[class="active"] {
+    // background-color: rgb(0, 195, 255);
+    color: rgb(199, 144, 24);
+    text-decoration: none;
+
+    // display: block;
+  }
+  // position: -webkit-sticky;
+  // margin-top: 0px;
+  // z-index: 100;
+  // background-color: rgb(255, 255, 255);
+  // box-shadow: 0 2.3px 10.9px rgba(0, 0, 0, 0.22);
+  // padding: 5px;
+}
+
+#navitems {
+  position: relative;
+  top: -10px;
+}
+
+#loginid {
+  float: right;
+  margin-right: 20px;
+}
+
+#log-button {
+  float: right;
+  margin-top: 3px;
+}
+#userpix {
+  margin-left: 5px;
+}
