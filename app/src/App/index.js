@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 // import calendarJson from "../Calendar";
 import Nav from "../Nav";
 import Tasks from "../Tasks";
+import VerticalLinearStepper from "../Tasks/stepper";
 import Team from "../Team";
 import useApi from "../auth/useApi";
 import useAuth0 from "../auth/useAuth0";
@@ -50,6 +51,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Protected component={Tasks} />} />
           <Route path="/team" element={<Team />} />
+          <Route path="/steps" element={<VerticalLinearStepper />} />
         </Routes>
       </main>
       <footer>

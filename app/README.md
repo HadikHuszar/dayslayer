@@ -1,7 +1,7 @@
 # React Client App
 
 This project was bootstrapped with [Create React
-App](https://github.com/facebook/create-react-app). blah blah.
+App](https://github.com/facebook/create-react-app).
 
 ## Project Structure
 
