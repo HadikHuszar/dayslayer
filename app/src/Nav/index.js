@@ -16,6 +16,7 @@ const Nav = () => (
       &nbsp;&nbsp; | &nbsp;&nbsp;<NavLink to="dashboard">Dashboard</NavLink>
       &nbsp;&nbsp;|&nbsp;&nbsp;
       <NavLink to="team">Team</NavLink>
+      <NavLink to="steps">Steps</NavLink>
     </span>
     <span id="loginid">
       <Auth />

@@ -2,6 +2,7 @@ import * as React from "react";
 
 import useApi from "../auth/useApi";
 
+import VerticalLinearStepper from "./stepper";
 import styles from "./styles.tasks.scss";
 
 const Tasks = () => {
@@ -24,13 +25,7 @@ const Tasks = () => {
         <span className="workspace-title">This is your input...</span>
         <span id="workspace-toolslist">
           Here are your tools:
-          <ol>
-            <li>Team Calendar</li>
-            <li>Mentor Calendar</li>
-            <li>Quote Generator</li>
-            <li>Daily Meditation Guide Generator</li>
-            <li>Anything Else? Hmmm....</li>
-          </ol>
+          <VerticalLinearStepper />
         </span>
       </section>
 
