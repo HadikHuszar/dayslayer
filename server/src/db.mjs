@@ -20,6 +20,8 @@ export const addTask = (sub, name) =>
     { sub, name },
   );
 
+export const getTeam = () => db.any("SELECT * FROM users");
+
 export const addOrUpdateUser = (user) =>
   db.one(
     `INSERT INTO users(given_name, family_name, picture, email, sub)

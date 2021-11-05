@@ -4,11 +4,13 @@ import mime from "mime-types";
 import jwtCheck from "./jwtCheck.mjs";
 import taskRouter from "./taskRouter.mjs";
 import userRouter from "./userRouter.mjs";
+import teamRouter from "./teamRouter.mjs";
 
 const app = express();
 
 app.use("/api/tasks", jwtCheck, taskRouter);
 app.use("/api/users", jwtCheck, userRouter);
+app.use("/api/team", jwtCheck, teamRouter);
 
 // Do not comment out or delete this end point. The React development server
 // won't start until it pings this end point successfully.

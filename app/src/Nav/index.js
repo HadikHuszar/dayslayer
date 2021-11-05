@@ -8,13 +8,12 @@ import styles from "./styles.nav.scss";
 
 const Nav = () => (
   <nav className={styles.nav}>
-    {/* <img src={logo} width="159" height="58" /> */}
     <NavLink to="/" end>
       {/* Home */}
       <img src={logo} width="159" height="58" alt="DaySlayer Logo" />
     </NavLink>
     <span id="navitems">
-      &nbsp;&nbsp; | &nbsp;&nbsp;<NavLink to="dashboard">Dashboard</NavLink>{" "}
+      &nbsp;&nbsp; | &nbsp;&nbsp;<NavLink to="dashboard">Dashboard</NavLink>
       &nbsp;&nbsp;|&nbsp;&nbsp;
       <NavLink to="team">Team</NavLink>
     </span>

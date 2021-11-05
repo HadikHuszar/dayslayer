@@ -2,3 +2,6 @@
 .env
 .envrc
 node_modules/
+
+
+app/src/mockData/*.json
