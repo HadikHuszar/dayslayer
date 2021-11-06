@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import useApi from "../auth/useApi";
-
+import useAuth0 from "../auth/useAuth0";
 import VerticalLinearStepper from "./stepper";
 
 import styles from "./styles.tasks.scss";
@@ -9,6 +9,7 @@ import styles from "./styles.tasks.scss";
 const Tasks = () => {
   const [tasks, setTasks] = React.useState([]);
   const { loading, apiClient } = useApi();
+  const { isAuthenticated, user } = useAuth0();
 
   const loadTasks = React.useCallback(
     async () => setTasks(await apiClient.getTasks()),
@@ -23,9 +24,8 @@ const Tasks = () => {
   return loading ? null : (
     <>
       <section className="workspace-container">
-        <span className="workspace-title">This is your input...</span>
+        <span className="workspace-title">Hello, {user.given_name} !</span>
         <span id="workspace-toolslist">
-          Here are your tools:
           <VerticalLinearStepper />
         </span>
       </section>
