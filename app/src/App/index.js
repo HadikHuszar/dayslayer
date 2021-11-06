@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import { ChakraProvider } from "@chakra-ui/react";
 import Moment from "react-moment";
 import { Routes, Route } from "react-router-dom";
 
@@ -51,7 +52,6 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Protected component={Tasks} />} />
           <Route path="/team" element={<Team />} />
-          <Route path="/steps" element={<VerticalLinearStepper />} />
         </Routes>
       </main>
       <footer>
