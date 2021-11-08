@@ -51,7 +51,6 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Protected component={Tasks} />} />
           <Route path="/team" element={<Team />} />
-          <Route path="/steps" element={<VerticalLinearStepper />} />
         </Routes>
       </main>
       <footer>

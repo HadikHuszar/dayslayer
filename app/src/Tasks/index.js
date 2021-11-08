@@ -1,13 +1,18 @@
 import * as React from "react";
 
 import useApi from "../auth/useApi";
-
+import useAuth0 from "../auth/useAuth0";
+import RecordVoiceOverRoundedIcon from "@mui/icons-material/RecordVoiceOverRounded";
 import VerticalLinearStepper from "./stepper";
+
 import styles from "./styles.tasks.scss";
+import Typography from "@mui/material/Typography";
 
 const Tasks = () => {
   const [tasks, setTasks] = React.useState([]);
   const { loading, apiClient } = useApi();
+  const { isAuthenticated, user } = useAuth0();
+  const [events, setEvents] = React.useState([]);
 
   const loadTasks = React.useCallback(
     async () => setTasks(await apiClient.getTasks()),
@@ -22,21 +27,36 @@ const Tasks = () => {
   return loading ? null : (
     <>
       <section className="workspace-container">
-        <span className="workspace-title">This is your input...</span>
+        <span className="workspace-title">Hello, {user.given_name} !</span>
         <span id="workspace-toolslist">
-          Here are your tools:
-          <VerticalLinearStepper />
+          <VerticalLinearStepper setEvents={setEvents} />
         </span>
       </section>
 
       <section className="tasks-container">
         <span className="output-title">This is your output...</span>
+        <CalendarList events={events} />
         <TaskList {...{ tasks }} />
         <AddTask {...{ addTask }} />
       </section>
     </>
   );
 };
+
+const CalendarList = ({ events }) => (
+  <ul>
+    <span id="calendarlist-date">November 11, 2021</span>
+    {events.map(({ id, title, date, start, end, icon }) => (
+      <li key={id}>
+        <span id="calendarlist-icon">{icon}</span>
+        <span id="calendarlist-times">
+          {start} - {end}:&nbsp;&nbsp;
+        </span>
+        <span id="calendarlist">{title}</span>
+      </li>
+    ))}
+  </ul>
+);
 
 const TaskList = ({ tasks }) => (
   <ul className={styles.list}>

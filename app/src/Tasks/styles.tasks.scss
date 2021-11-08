@@ -1,43 +1,37 @@
 .button {
-  margin-left: 2rem;
+  margin-left: 4rem;
 }
 
 ////// TASKS PAGE //////////
 
 .tasks-container {
+  li {
+    margin-top: 10px;
+    list-style-type: none;
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+  }
   .list {
     list-style: none;
-    margin: 2rem 0 3rem;
+    margin: 1rem 0 1rem;
     padding-left: 0;
     color: rgb(0, 0, 0);
-
-    li {
-      margin-top: 1rem;
-
-      &::before {
-        content: "🐶";
-        font-size: 1.5rem;
-        margin-right: 1.25rem;
-      }
-    }
   }
   box-sizing: border-box; /* or not */
   border-radius: 25px;
   box-shadow: inset 0 12.5px 10px rgba(0, 0, 0, 0.06),
     0 22.3px 17.9px rgba(0, 0, 0, 0.22);
   z-index: 0;
-  margin: 0 auto;
-  background: rgb(83, 142, 245);
+  background: #217ece;
   opacity: 0.9;
-  padding: 1.5rem;
+  padding: 1rem;
   // background-image: url("/assets/sky.jpeg");
 
   position: absolute;
-  right: 60px;
-  margin-top: 40px;
-  margin-left: 5px;
-  width: 20rem;
-  height: 34rem;
+  top: 107px;
+  right: 200px;
+  width: 22rem;
+  height: 35rem;
 
   .output-title {
     position: relative;
@@ -60,17 +54,17 @@
   background: rgb(147, 171, 211);
   opacity: 0.9;
   padding: 1.5rem;
-  // background-image: url("/assets/sky.jpeg");
 
   float: left;
-  margin-top: 60px;
-  margin-left: 75px;
-  width: 60rem;
-  height: 34rem;
+  position: relative;
+  top: 0px;
+  left: 70px;
+  width: 40rem;
+  height: 35rem;
 
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-size: 24px;
-  color: white;
+  font-size: 30px;
+  color: rgb(255, 255, 255);
 
   .workspace-title {
     position: relative;
@@ -85,15 +79,22 @@
 
 #workspace-toolslist {
   position: relative;
-  top: 20px;
+  top: -10px;
   left: 140px;
   font-family: "Roboto", sans-serif;
   color: rgb(233, 232, 244);
   // text-shadow: 1px 1.5px 0px rgba(0, 0, 0, 0.7);
-  font-size: 20px;
+  font-size: 2px;
+}
 
-  li {
-    margin-top: 15px;
-    margin-left: 100px;
-  }
+#calendarlist {
+  color: rgb(0, 0, 0);
+}
+
+#calendarlist-icon {
+  color: rgb(0, 0, 0);
+}
+
+#calendarlist-times {
+  color: rgb(255, 255, 255);
 }

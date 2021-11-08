@@ -4,4 +4,4 @@
 node_modules/
 
 
-app/src/mockData/*.json
+mockData/*.json
