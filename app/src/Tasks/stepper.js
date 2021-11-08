@@ -3,6 +3,8 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import RecordVoiceOverRoundedIcon from "@mui/icons-material/RecordVoiceOverRounded";
 import SendIcon from "@mui/icons-material/Send";
 import Step from "@mui/material/Step";
 import StepContent from "@mui/material/StepContent";
@@ -15,45 +17,64 @@ const steps = [
     label: "Collect Items from the Team Calendar",
     description: `Pull items from the Team Calendar for the Day`,
     button: `Pull Team Calendar`,
-    action: `() => {
-      alert("clicked");
-    }`,
+    action: (e, setEvents) => {
+      const events = [
+        {
+          id: "1",
+          title: "Daily Morning Stand-Up",
+          date: `November 11, 2021`,
+          start: `8:00 AM`,
+          end: `8:30 AM`,
+          icon: <PeopleAltIcon sx={{ mb: -1, ml: -5, mr: 2 }} />,
+        },
+        {
+          id: "2",
+          title: "Final Project Demos!",
+          date: `November 11, 2021`,
+          start: `3:30 PM`,
+          end: `5:00 PM`,
+          icon: <RecordVoiceOverRoundedIcon sx={{ mb: -1, ml: -5, mr: 2 }} />,
+        },
+      ];
+
+      setEvents(events);
+    },
   },
   {
     label: "Check Mentor Calendar",
     description: "Pull mentors for the day from the Mentor Calendar",
     button: `Pull Mentor Calendar`,
-    action: `() => {
-      alert("clicked");
-    }`,
+    action: () => {
+      alert("clicked form action fn");
+    },
   },
   {
     label: "Create Discussion Threads",
     description: `Add discussion threads automatically here.`,
     button: `Create Discusison Threads`,
-    action: `() => {
-      alert("clicked");
-    }`,
+    action: () => {
+      alert("clicked form action fn");
+    },
   },
   {
     label: "Breathing Exercise / Meditation Selector",
     description: `Select the Breathing Exercise for the day.`,
     button: `Select Breathing Exercise`,
-    action: `() => {
-      alert("clicked");
-    }`,
+    action: () => {
+      alert("clicked form action fn");
+    },
   },
   {
     label: "Inspirational Quote Generator",
     description: `Generate the inspirational quote for the day.`,
     button: `Generate Quote`,
-    action: `() => {
-      alert("clicked");
-    }`,
+    action: () => {
+      alert("clicked form action fn");
+    },
   },
 ];
 
-export default function VerticalLinearStepper() {
+export default function VerticalLinearStepper({ setEvents }) {
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
@@ -89,8 +110,8 @@ export default function VerticalLinearStepper() {
                   variant="outlined"
                   size="small"
                   sx={{ mt: 1, mr: 1, mb: 1, ml: 5 }}
-                  onClick={() => {
-                    alert("clicked");
+                  onClick={(e) => {
+                    return step.action(e, setEvents);
                   }}
                 >
                   {step.button}

@@ -32,7 +32,7 @@ router.get("/", async (request, response) => {
 
           axios
             .get(
-              `https://www.googleapis.com/calendar/v3/calendars/c_j5d3c22o6nod523b02gatphkos%40group.calendar.google.com/events?timeMax=2021-11-14T00%3A00%3A00.00Z&timeMin=2021-11-04T00%3A00%3A00.00Z&prettyPrint=true&key=${process.env.GOOGLE_API_KEY}`,
+              `https://www.googleapis.com/calendar/v3/calendars/c_j5d3c22o6nod523b02gatphkos%40group.calendar.google.com/events?timeMax=2021-11-14T00%3A00%3A00.00Z&timeMin=2021-11-04T00%3A00%3A00.00Z&prettyPrint=true&key=${process.env.GOOGLE_API_KEY_NEW}`,
               {
                 headers: {
                   authorization: `Bearer ${googleAccessToken}`,
