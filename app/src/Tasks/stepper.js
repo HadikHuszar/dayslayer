@@ -88,8 +88,17 @@ const steps = [
     label: "Inspirational Quote Generator",
     description: `Generate the inspirational quote for the day.`,
     button: `Generate Quote`,
-    action: () => {
-      alert("clicked form action fn");
+    action: (e, { setQuote, setQuotation, setAuthor }) => {
+      const quotes = [
+        fetch("http://quotes.rest/qod.json?category=inspire")
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            setQuotation = "data.contents.quotes[0].quote";
+            setAuthor = "data.contents.quotes[0].author";
+          }),
+      ];
+      setQuote(quotes);
     },
   },
   {
@@ -115,6 +124,7 @@ export default function VerticalLinearStepper({
   setMentors,
   setThreads,
   setMeditation,
+  setQuote,
 }) {
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -157,6 +167,7 @@ export default function VerticalLinearStepper({
                       setMentors,
                       setThreads,
                       setMeditation,
+                      setQuote,
                     });
                   }}
                 >
