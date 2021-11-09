@@ -17,7 +17,7 @@ const steps = [
     label: "Collect Items from the Team Calendar",
     description: `Pull items from the Team Calendar for the Day`,
     button: `Pull Team Calendar`,
-    action: (e, setEvents) => {
+    action: (e, { setEvents }) => {
       const events = [
         {
           id: "1",
@@ -25,7 +25,9 @@ const steps = [
           date: `November 11, 2021`,
           start: `8:00 AM`,
           end: `8:30 AM`,
-          icon: <PeopleAltIcon sx={{ mb: -1, ml: -5, mr: 2 }} />,
+          icon: "☕️",
+          link: "https://zoom.us/j/91272177622?pwd=WmVRbDk1eUs0SnpGQVhubXJZV0FOdz09",
+          copyableText: `Daily Morning Stand-Up`,
         },
         {
           id: "2",
@@ -33,10 +35,18 @@ const steps = [
           date: `November 11, 2021`,
           start: `3:30 PM`,
           end: `5:00 PM`,
-          icon: <RecordVoiceOverRoundedIcon sx={{ mb: -1, ml: -5, mr: 2 }} />,
+          icon: "🖥",
+          link: "https://zoom.us/j/91272177622?pwd=WmVRbDk1eUs0SnpGQVhubXJZV0FOdz09",
         },
+        // {
+        //   id: "3",
+        //   title: "Final Project Demos!",
+        //   date: `November 11, 2021`,
+        //   start: `3:30 PM`,
+        //   end: `5:00 PM`,
+        //   // icon: 🧵 , 🍐, 💻 , ⌨️,  🖥 , 🔍 , 🎥
+        // },
       ];
-
       setEvents(events);
     },
   },
@@ -44,24 +54,34 @@ const steps = [
     label: "Check Mentor Calendar",
     description: "Pull mentors for the day from the Mentor Calendar",
     button: `Pull Mentor Calendar`,
-    action: () => {
-      alert("clicked form action fn");
-    },
-  },
-  {
-    label: "Create Discussion Threads",
-    description: `Add discussion threads automatically here.`,
-    button: `Create Discusison Threads`,
-    action: () => {
-      alert("clicked form action fn");
+    action: (e, { setMentors }) => {
+      const mentors = [
+        {
+          id: "1",
+          title: "There Are No Mentors for Today",
+          date: `November 11, 2021`,
+          start: ``,
+          end: ``,
+          icon: "👥",
+        },
+      ];
+      setMentors(mentors);
     },
   },
   {
     label: "Breathing Exercise / Meditation Selector",
     description: `Select the Breathing Exercise for the day.`,
     button: `Select Breathing Exercise`,
-    action: () => {
-      alert("clicked form action fn");
+    action: (e, { setMeditation }) => {
+      const meditation = [
+        {
+          id: "1",
+          title: "3-Min Mindful Breathing",
+          icon: "🧘‍♂️",
+          link: "https://youtu.be/SEfs5TJZ6Nk",
+        },
+      ];
+      setMeditation(meditation);
     },
   },
   {
@@ -72,9 +92,30 @@ const steps = [
       alert("clicked form action fn");
     },
   },
+  {
+    label: "Create Discussion Threads",
+    description: `Add discussion threads automatically here.`,
+    button: `Create Discussion Threads`,
+    action: (e, { setThreads }) => {
+      const threads = [
+        {
+          id: "1",
+          title: "Final Project Demos",
+          icon: "🧵",
+          copyableText: `🧵 Final Project Demos`,
+        },
+      ];
+      setThreads(threads);
+    },
+  },
 ];
 
-export default function VerticalLinearStepper({ setEvents }) {
+export default function VerticalLinearStepper({
+  setEvents,
+  setMentors,
+  setThreads,
+  setMeditation,
+}) {
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
@@ -111,7 +152,12 @@ export default function VerticalLinearStepper({ setEvents }) {
                   size="small"
                   sx={{ mt: 1, mr: 1, mb: 1, ml: 5 }}
                   onClick={(e) => {
-                    return step.action(e, setEvents);
+                    return step.action(e, {
+                      setEvents,
+                      setMentors,
+                      setThreads,
+                      setMeditation,
+                    });
                   }}
                 >
                   {step.button}
@@ -157,3 +203,9 @@ export default function VerticalLinearStepper({ setEvents }) {
     </Box>
   );
 }
+
+// curl \
+//   'https://www.googleapis.com/calendar/v3/calendars/primary/events?key=AIzaSyB5_M11WjrupdQTzKuwALbzAdZ1dGc8Nd4' \
+//   --header 'Authorization: Bearer ya29.a0ARrdaM_Wzwp1OJtvu6jYbUnzqe_GeBbxfVijE-2nSKRiBZOTVZdp6c4l8i3_o9eeJWUasQ13ok1_Q1im6k-rHqdSFmpt1iDSTKd3GcWMweNhwvCK48gole3U559Vhmi4fpb7TBZnE8UbDSQNSQf-g4BQf1Mo2w' \
+//   --header 'Accept: application/json' \
+//   --compressed
