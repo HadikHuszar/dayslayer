@@ -17,6 +17,9 @@ const Tasks = () => {
   const [mentors, setMentors] = React.useState([]);
   const [threads, setThreads] = React.useState([]);
   const [meditation, setMeditation] = React.useState([]);
+  const [quotes, setQuote] = React.useState([]);
+  const [quotation, setQuotation] = React.useState([]);
+  const [author, setAuthor] = React.useState([]);
 
   const loadTasks = React.useCallback(
     async () => setTasks(await apiClient.getTasks()),
@@ -58,13 +61,13 @@ const Tasks = () => {
 
   // getapi(api_url);
 
-  const FetchQuote = () => {
-    fetch("http://quotes.rest/qod.json?category=inspire")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
-  };
+  // const FetchQuote = () => {
+  //   fetch("http://quotes.rest/qod.json?category=inspire")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
+  // };
 
   return loading ? null : (
     <>
@@ -78,6 +81,9 @@ const Tasks = () => {
             setMentors={setMentors}
             setThreads={setThreads}
             setMeditation={setMeditation}
+            setQuote={setQuote}
+            setQuotation={setQuotation}
+            setAuthor={setAuthor}
           />
         </span>
       </section>
@@ -95,6 +101,7 @@ const Tasks = () => {
           <MentorList mentors={mentors} />
           <MeditationList meditation={meditation} />
           <ThreadsList threads={threads} />
+          <QuoteList quotes={quotes} quotation={quotation} author={author} />
           <TaskList {...{ tasks }} />
           <AddTask {...{ addTask }} />
         </span>
@@ -160,6 +167,20 @@ const MeditationList = ({ meditation }) => (
         <a href={link} onClick={link} target="_blank">
           (YouTube)
         </a>
+      </li>
+    ))}
+  </ul>
+);
+
+const QuoteList = ({ quotes }) => (
+  <ul>
+    {quotes.map(({ id, quotation, author }) => (
+      <li key={id}>
+        <span id="calendarlist-icon">{quotation}</span>
+        <span id="calendarlist-title">{author}</span>
+        {/* <a href={link} onClick={link} target="_blank">
+          (YouTube)
+        </a> */}
       </li>
     ))}
   </ul>
