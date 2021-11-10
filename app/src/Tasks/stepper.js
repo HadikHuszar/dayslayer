@@ -28,7 +28,7 @@ const steps = [
           end: `8:30 AM`,
           icon: "☕️",
           link: "https://zoom.us/j/91272177622?pwd=WmVRbDk1eUs0SnpGQVhubXJZV0FOdz09",
-          copyableText: `Daily Morning Stand-Up`,
+          copyableText: `☕️ Daily Morning Stand-Up (https://zoom.us/j/91272177622?pwd=WmVRbDk1eUs0SnpGQVhubXJZV0FOdz09)`,
         },
         {
           id: "2",
@@ -38,6 +38,7 @@ const steps = [
           end: `5:00 PM`,
           icon: "🖥",
           link: "https://zoom.us/j/91272177622?pwd=WmVRbDk1eUs0SnpGQVhubXJZV0FOdz09",
+          copyableText: `🖥  Final Project Demos! [Zoom](https://zoom.us/j/91272177622?pwd=WmVRbDk1eUs0SnpGQVhubXJZV0FOdz09)`,
         },
         // {
         //   id: "3",
@@ -64,6 +65,7 @@ const steps = [
           start: ``,
           end: ``,
           icon: "👥",
+          copyableText: `👥  There Are No Mentors for Today`,
         },
       ];
       setMentors(mentors);
@@ -80,6 +82,7 @@ const steps = [
           title: "3-Min Mindful Breathing",
           icon: "🧘‍♂️",
           link: "https://youtu.be/SEfs5TJZ6Nk",
+          copyableText: `🧘‍♂️  3-Min Mindful Breathing  (https://youtu.be/SEfs5TJZ6Nk)`,
         },
       ];
       setMeditation(meditation);

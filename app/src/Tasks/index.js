@@ -52,43 +52,47 @@ const Tasks = () => {
   };
 
   return loading ? null : (
-    <>
-      <section className="workspace-container">
-        <span className="workspace-title">
+    <section className="generator-container">
+      <div>
+        <div className="workspace-title">
           {user.given_name} , this is your input ...
-        </span>
-        <span id="workspace-toolslist">
-          <VerticalLinearStepper
-            setEvents={setEvents}
-            setMentors={setMentors}
-            setThreads={setThreads}
-            setMeditation={setMeditation}
-            setQuote={setQuote}
-            generateCopyableString={generateCopyableString}
-          />
-        </span>
-      </section>
-      <section className="tasks-container">
-        <span className="tasks-container-title">This is your output...</span>
-        <span id="copy">
-          <CopyToClipboard
-            text={generateCopyableString()}
-            onCopy={() => console.log("copied")}
-          >
-            <button>Copy to Clipboard</button>
-          </CopyToClipboard>
-        </span>
-        <span className="tasks-container-toolslist">
-          <CalendarList events={events} />
-          <MentorList mentors={mentors} />
-          <MeditationList meditation={meditation} />
-          <ThreadsList threads={threads} />
-          <QuoteList quote={quote} />
-          <TaskList {...{ tasks }} deleteTask={deleteTask} />
-          <AddTask {...{ addTask }} />
-        </span>
-      </section>
-    </>
+        </div>
+        <section className="workspace-container">
+          <span id="workspace-toolslist">
+            <VerticalLinearStepper
+              setEvents={setEvents}
+              setMentors={setMentors}
+              setThreads={setThreads}
+              setMeditation={setMeditation}
+              setQuote={setQuote}
+              generateCopyableString={generateCopyableString}
+            />
+          </span>
+        </section>
+      </div>
+      <div>
+        <div className="tasks-container-title">This is your output...</div>
+        <section className="tasks-container">
+          <span id="copy">
+            <CopyToClipboard
+              text={generateCopyableString()}
+              onCopy={() => console.log("copied")}
+            >
+              <button>Copy to Clipboard</button>
+            </CopyToClipboard>
+          </span>
+          <span className="tasks-container-toolslist">
+            <CalendarList events={events} />
+            <MentorList mentors={mentors} />
+            <MeditationList meditation={meditation} />
+            <ThreadsList threads={threads} />
+            <QuoteList quote={quote} />
+            <TaskList {...{ tasks }} deleteTask={deleteTask} />
+            <AddTask {...{ addTask }} />
+          </span>
+        </section>
+      </div>
+    </section>
   );
 };
 
