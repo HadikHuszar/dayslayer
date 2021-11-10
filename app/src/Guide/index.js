@@ -2,9 +2,11 @@ import * as React from "react";
 
 import useApi from "../auth/useApi";
 import useAuth0 from "../auth/useAuth0";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import VerticalLinearStepper from "./stepper";
 
-import styles from "./styles.tasks.scss";
+import styles from "./styles.guide.scss";
+// import Typography from "@mui/material/Typography";
 
 const Tasks = () => {
   const [tasks, setTasks] = React.useState([]);
@@ -15,42 +17,39 @@ const Tasks = () => {
   const [threads, setThreads] = React.useState([]);
   const [meditation, setMeditation] = React.useState([]);
   const [quote, setQuote] = React.useState({});
-  const [pairs, setPairs] = React.useState({});
 
   const loadTasks = React.useCallback(
     async () => setTasks(await apiClient.getTasks()),
     [apiClient],
   );
+  const addTask = (task) => apiClient.addTask(task).then(loadTasks);
+
+  const deleteTask = (id) => apiClient.deleteTask(id).then(loadTasks);
 
   React.useEffect(() => {
     !loading && loadTasks();
   }, [loading, loadTasks]);
 
   const generateCopyableString = () => {
-    return (
-      [...events, ...mentors, ...threads, ...meditation, quote]
-        // return [...events, ...mentors, ...meditation, ...threads, ...pairs, quote]
-        .map((data) => data.copyableText)
-        .filter((data) => data !== undefined)
-        .join("\n")
-    );
+    return [...events, ...mentors, ...meditation, ...threads, quote]
+      .map((data) => data.copyableText)
+      .filter((data) => data !== undefined)
+      .join("\n");
   };
 
-  //////////////////// USE LATER //////////////////////////
+  const dynamicallyGenerateString = () => {
+    const parsedEventStrings = events.map(
+      (event) => `${event.date}: ${event.title}\n`,
+    );
+    //parsed mentors
+    // parsed medidiation
+    // threads
+    // parsed quote
 
-  // const dynamicallyGenerateString = () => {
-  //   const parsedEventStrings = events.map(
-  //     (event) => `${event.date}: ${event.title}\n`,
-  //   );
-  //   //parsed mentors
-  //   // parsed medidiation
-  //   // threads
-  //   // parsed quote
-
-  //   // [...parsedEventStrings, ...parsedMentorStrings, ...parsedMeditationStrings, ...parsedThreadStrings]
-  //   //   .filter((data) => data !== undefined)
-  //   //   .join("\n");
-  // };
+    // [...parsedEventStrings, ...parsedMentorStrings, ...parsedMeditationStrings, ...parsedThreadStrings]
+    //   .filter((data) => data !== undefined)
+    //   .join("\n");
+  };
 
   return loading ? null : (
     <section className="generator-container">
@@ -66,7 +65,6 @@ const Tasks = () => {
               setThreads={setThreads}
               setMeditation={setMeditation}
               setQuote={setQuote}
-              setPairs={setPairs}
               generateCopyableString={generateCopyableString}
             />
           </span>
@@ -75,15 +73,22 @@ const Tasks = () => {
       <div>
         <div className="tasks-container-title">This is your output...</div>
         <section className="tasks-container">
+          <span id="copy">
+            <CopyToClipboard
+              text={generateCopyableString()}
+              onCopy={() => console.log("copied")}
+            >
+              <button>Copy to Clipboard</button>
+            </CopyToClipboard>
+          </span>
           <span className="tasks-container-toolslist">
             <CalendarList events={events} />
             <MentorList mentors={mentors} />
-            {/* <PairsList pairs={pairs} /> */}
-            <ThreadsList threads={threads} />
             <MeditationList meditation={meditation} />
+            <ThreadsList threads={threads} />
             <QuoteList quote={quote} />
-            <TaskList {...{ tasks }} />
-            {/* <AddTask {...{ addTask }} /> */}
+            <TaskList {...{ tasks }} deleteTask={deleteTask} />
+            <AddTask {...{ addTask }} />
           </span>
         </section>
       </div>
@@ -97,8 +102,7 @@ const CalendarList = ({ events }) => (
       <span role="img" aria-label="sun emoji">
         ☀️ &nbsp;
       </span>
-      Today's date is:&nbsp;&nbsp;
-      {new Date().toLocaleDateString("en-US", "long")}
+      Today's date is: {new Date().toLocaleDateString()}
     </span>
     {events.map(({ id, title, date, start, end, icon, link }) => (
       <li key={id}>
@@ -161,17 +165,6 @@ const QuoteList = ({ quote: { quotation, author } }) => (
   </span>
 );
 
-// const PairsList = ({ pairs }) => (
-//   <ul>
-//     {pairs.map(({ id, title, icon }) => (
-//       <li key={id}>
-//         <span id="calendarlist-icon">{icon}</span>
-//         <span id="calendarlist-title">{title}</span>
-//       </li>
-//     ))}
-//   </ul>
-// );
-
 const TaskList = ({ tasks, deleteTask }) => (
   <ul className={styles.list}>
     {tasks.map(({ id, name }) => (
@@ -189,5 +182,31 @@ const TaskList = ({ tasks, deleteTask }) => (
     ))}
   </ul>
 );
+
+const AddTask = ({ addTask }) => {
+  const [task, setTask] = React.useState("");
+
+  const canAdd = task !== "";
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (canAdd) {
+      addTask(task);
+      setTask("");
+    }
+  };
+
+  return (
+    <form {...{ onSubmit }}>
+      <label>
+        New Item:
+        <input onChange={(e) => setTask(e.currentTarget.value)} value={task} />
+      </label>
+      <button disabled={!canAdd} className={styles.button}>
+        Add
+      </button>
+    </form>
+  );
+};
 
 export default Tasks;

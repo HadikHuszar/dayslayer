@@ -73,34 +73,6 @@ const steps = [
       setMentors(mentors);
     },
   },
-  // {
-  //   label: "Pairing Groups",
-  //   description: `Generate Pairing Groups for the day here.`,
-  //   button: `Create Pairing Groups`,
-  //   action: (e, { setPairs }) => {
-  //     const pairs = [
-  //       {
-  //         id: "1",
-  //         title: "Group 1: Member1, Member2, Member3",
-  //         icon: "🍐",
-  //         copyableText: `🍐 Group 1: Member1, Member2, Member3`,
-  //       },
-  //       {
-  //         id: "2",
-  //         title: "Group 2: Member4, Member5, Member6",
-  //         icon: "🍐",
-  //         copyableText: `🍐 Group 2: Member4, Member5, Member6`,
-  //       },
-  //       {
-  //         id: "3",
-  //         title: "Group 3: Member7, Member8, Member9",
-  //         icon: "🍐",
-  //         copyableText: `🍐 Group 3: Member7, Member8, Member9`,
-  //       },
-  //     ];
-  //     setPairs(pairs);
-  //   },
-  // },
   {
     label: "Breathing Exercise / Meditation Selector",
     description: `Select the Breathing Exercise for the day.`,
@@ -174,7 +146,6 @@ export default function VerticalLinearStepper({
   setMeditation,
   setQuote,
   generateCopyableString,
-  setPairs,
 }) {
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -218,7 +189,6 @@ export default function VerticalLinearStepper({
                       setThreads,
                       setMeditation,
                       setQuote,
-                      setPairs,
                     });
                   }}
                 >
