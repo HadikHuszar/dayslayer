@@ -35,8 +35,6 @@ header {
 /* ////// Interface /////// */
 body {
   font-family: "Roboto", sans-serif;
-  /* background-color: rgb(238, 232, 241); */
-  /* background-color: rgb(234, 233, 247); */
   color: rgb(255, 255, 255);
 }
 
@@ -47,15 +45,13 @@ main {
   margin-top: 1em;
 }
 
-html,
 body {
-  // overflow-x: hidden;
-}
-body {
-  /* background: rgb(0, 0, 0); */
-  /* background-image: url("image.jpeg"); */
-  background-position: absolute;
+  background-position: center;
   background-image: url("/assets/marbles_2000.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
 }
 
 #biline {
@@ -67,52 +63,3 @@ body {
   left: 1200px;
   color: rgb(20, 35, 123);
 }
-
-// body {
-//   display: grid;
-//   grid-template-columns: repeat(4, 1fr);
-//   grid-template-rows: 10vw 30vw 10vw;
-//   grid-gap: 1em;
-// }
-
-// header,
-// footer {
-//   grid-column: 1 / span 5;
-// }
-
-// main {
-//   grid-column: 1 / span 3;
-// }
-
-// aside {
-//   grid-column: span 2;
-// }
-
-// @media (max-width: 900px) {
-//   main,
-//   aside {
-//     grid-column: 1 / span 5;
-//   }
-// }
-
-// /* Demo Specific Styles */
-// body {
-//   margin: 0 auto;
-//   max-width: 56em;
-//   padding: 1em 0;
-// }
-
-// header,
-// main,
-// aside,
-// footer {
-//   background: #eaeaea;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
-
-// header,
-// footer {
-//   height: 10vw;
-// }
