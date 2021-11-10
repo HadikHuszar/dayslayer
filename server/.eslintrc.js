@@ -17,7 +17,7 @@ module.exports = {
   rules: {
     "no-console": "off",
     "import/order": [
-      "error",
+      "off",
       {
         alphabetize: { order: "asc" },
         groups: [

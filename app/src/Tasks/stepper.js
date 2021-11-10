@@ -3,8 +3,9 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
-import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import RecordVoiceOverRoundedIcon from "@mui/icons-material/RecordVoiceOverRounded";
+// import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+// import RecordVoiceOverRoundedIcon from "@mui/icons-material/RecordVoiceOverRounded";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import SendIcon from "@mui/icons-material/Send";
 import Step from "@mui/material/Step";
 import StepContent from "@mui/material/StepContent";
@@ -88,17 +89,19 @@ const steps = [
     label: "Inspirational Quote Generator",
     description: `Generate the inspirational quote for the day.`,
     button: `Generate Quote`,
-    action: (e, { setQuote, setQuotation, setAuthor }) => {
-      const quotes = [
-        fetch("http://quotes.rest/qod.json?category=inspire")
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            setQuotation = "data.contents.quotes[0].quote";
-            setAuthor = "data.contents.quotes[0].author";
-          }),
-      ];
-      setQuote(quotes);
+    action: (e, { setQuote }) => {
+      fetch("http://quotes.rest/qod.json?category=inspire")
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          const quotation = data.contents.quotes[0].quote;
+          const author = data.contents.quotes[0].author;
+          setQuote({
+            quotation,
+            author,
+            copyableText: `${quotation} -${author}`,
+          });
+        });
     },
   },
   {
@@ -125,6 +128,7 @@ export default function VerticalLinearStepper({
   setThreads,
   setMeditation,
   setQuote,
+  generateCopyableString,
 }) {
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -207,16 +211,15 @@ export default function VerticalLinearStepper({
             onClick={handleReset}
             sx={{ mt: 1, mr: 1 }}
           >
-            Send to Team
+            <CopyToClipboard
+              text={generateCopyableString()}
+              onCopy={() => console.log("copied")}
+            >
+              <span>Copy to Clipboard</span>
+            </CopyToClipboard>
           </Button>
         </Paper>
       )}
     </Box>
   );
 }
-
-// curl \
-//   'https://www.googleapis.com/calendar/v3/calendars/primary/events?key=AIzaSyB5_M11WjrupdQTzKuwALbzAdZ1dGc8Nd4' \
-//   --header 'Authorization: Bearer ya29.a0ARrdaM_Wzwp1OJtvu6jYbUnzqe_GeBbxfVijE-2nSKRiBZOTVZdp6c4l8i3_o9eeJWUasQ13ok1_Q1im6k-rHqdSFmpt1iDSTKd3GcWMweNhwvCK48gole3U559Vhmi4fpb7TBZnE8UbDSQNSQf-g4BQf1Mo2w' \
-//   --header 'Accept: application/json' \
-//   --compressed

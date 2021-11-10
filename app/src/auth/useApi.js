@@ -8,11 +8,14 @@ const makeApi = (accessToken) => {
     addTask: (name) => _post("/api/tasks", { name }),
     addOrUpdateUser: (user) => _post("/api/users", { user }),
     getTeam: () => _get("/api/team"),
+    deleteTask: (id) => _delete(`api/tasks/${id}`),
   };
 
   const getTeam = async (user) => await _fetch(user).json();
 
   const _get = async (url) => (await _fetch(url)).json();
+
+  const _delete = (url) => _fetch(url, { method: "DELETE" });
 
   const _post = async (url, body) => {
     const response = await _fetch(url, {

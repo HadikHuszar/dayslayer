@@ -20,6 +20,9 @@ export const addTask = (sub, name) =>
     { sub, name },
   );
 
+export const deleteTask = (id) =>
+  db.none("DELETE FROM tasks WHERE id = ${id}", { id });
+
 export const getTeam = () => db.any("SELECT * FROM users");
 
 export const addOrUpdateUser = (user) =>
