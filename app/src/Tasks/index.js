@@ -2,12 +2,11 @@ import * as React from "react";
 
 import useApi from "../auth/useApi";
 import useAuth0 from "../auth/useAuth0";
-// import FetchQuote from "./quotesFetcher";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import VerticalLinearStepper from "./stepper";
 
 import styles from "./styles.tasks.scss";
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 
 const Tasks = () => {
   const [tasks, setTasks] = React.useState([]);
@@ -17,9 +16,7 @@ const Tasks = () => {
   const [mentors, setMentors] = React.useState([]);
   const [threads, setThreads] = React.useState([]);
   const [meditation, setMeditation] = React.useState([]);
-  const [quotes, setQuote] = React.useState([]);
-  const [quotation, setQuotation] = React.useState([]);
-  const [author, setAuthor] = React.useState([]);
+  const [quote, setQuote] = React.useState({});
 
   const loadTasks = React.useCallback(
     async () => setTasks(await apiClient.getTasks()),
@@ -27,12 +24,14 @@ const Tasks = () => {
   );
   const addTask = (task) => apiClient.addTask(task).then(loadTasks);
 
+  const deleteTask = (id) => apiClient.deleteTask(id).then(loadTasks);
+
   React.useEffect(() => {
     !loading && loadTasks();
   }, [loading, loadTasks]);
 
   const generateCopyableString = () => {
-    return [...events, ...mentors, ...meditation, ...threads]
+    return [...events, ...mentors, ...meditation, ...threads, quote]
       .map((data) => data.copyableText)
       .filter((data) => data !== undefined)
       .join("\n");
@@ -45,29 +44,12 @@ const Tasks = () => {
     //parsed mentors
     // parsed medidiation
     // threads
+    // parsed quote
 
     // [...parsedEventStrings, ...parsedMentorStrings, ...parsedMeditationStrings, ...parsedThreadStrings]
     //   .filter((data) => data !== undefined)
     //   .join("\n");
   };
-
-  // const api_url = "https://zenquotes.io/api/quotes/";
-
-  // async function getapi(url) {
-  //   const response = await fetch(url);
-  //   var data = await response.json();
-  //   console.log(data);
-  // }
-
-  // getapi(api_url);
-
-  // const FetchQuote = () => {
-  //   fetch("http://quotes.rest/qod.json?category=inspire")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //     });
-  // };
 
   return loading ? null : (
     <>
@@ -82,27 +64,27 @@ const Tasks = () => {
             setThreads={setThreads}
             setMeditation={setMeditation}
             setQuote={setQuote}
-            setQuotation={setQuotation}
-            setAuthor={setAuthor}
+            generateCopyableString={generateCopyableString}
           />
         </span>
       </section>
       <section className="tasks-container">
         <span className="tasks-container-title">This is your output...</span>
-
-        <CopyToClipboard
-          text={generateCopyableString()}
-          onCopy={() => console.log("copied")}
-        >
-          <button>Copy to clipboard with button</button>
-        </CopyToClipboard>
+        <span id="copy">
+          <CopyToClipboard
+            text={generateCopyableString()}
+            onCopy={() => console.log("copied")}
+          >
+            <button>Copy to Clipboard</button>
+          </CopyToClipboard>
+        </span>
         <span className="tasks-container-toolslist">
           <CalendarList events={events} />
           <MentorList mentors={mentors} />
           <MeditationList meditation={meditation} />
           <ThreadsList threads={threads} />
-          <QuoteList quotes={quotes} quotation={quotation} author={author} />
-          <TaskList {...{ tasks }} />
+          <QuoteList quote={quote} />
+          <TaskList {...{ tasks }} deleteTask={deleteTask} />
           <AddTask {...{ addTask }} />
         </span>
       </section>
@@ -164,7 +146,7 @@ const MeditationList = ({ meditation }) => (
       <li key={id}>
         <span id="calendarlist-icon">{icon}</span>
         <span id="calendarlist-title">{title}</span>
-        <a href={link} onClick={link} target="_blank">
+        <a href={link} target="_blank">
           (YouTube)
         </a>
       </li>
@@ -172,24 +154,27 @@ const MeditationList = ({ meditation }) => (
   </ul>
 );
 
-const QuoteList = ({ quotes }) => (
-  <ul>
-    {quotes.map(({ id, quotation, author }) => (
-      <li key={id}>
-        <span id="calendarlist-icon">{quotation}</span>
-        <span id="calendarlist-title">{author}</span>
-        {/* <a href={link} onClick={link} target="_blank">
-          (YouTube)
-        </a> */}
-      </li>
-    ))}
-  </ul>
+const QuoteList = ({ quote: { quotation, author } }) => (
+  <span>
+    <span id="calendarlist-icon">{quotation}</span>
+    <span id="calendarlist-title">{author}</span>
+  </span>
 );
 
-const TaskList = ({ tasks }) => (
+const TaskList = ({ tasks, deleteTask }) => (
   <ul className={styles.list}>
     {tasks.map(({ id, name }) => (
-      <li key={id}>{name}</li>
+      <li key={id}>
+        <span
+          role="button"
+          tabIndex="0"
+          onKeyDown={() => deleteTask(id)}
+          id="task_name"
+          onClick={() => deleteTask(id)}
+        >
+          {name}
+        </span>
+      </li>
     ))}
   </ul>
 );

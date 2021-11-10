@@ -11,7 +11,7 @@ module.exports = {
     "jsx-a11y/no-onchange": "off",
     "import/no-unresolved": "error",
     "import/order": [
-      "warn",
+      "off",
       {
         alphabetize: { order: "asc" },
         groups: [
