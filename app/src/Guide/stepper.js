@@ -14,6 +14,8 @@ import Stepper from "@mui/material/Stepper";
 import Typography from "@mui/material/Typography";
 import { GuideType } from ".";
 
+const label = { inputProps: { "aria-label": "Checkbox" } };
+
 const steps = [
   {
     label: "Morning Stand-Up Guide",
@@ -25,44 +27,44 @@ const steps = [
           id: "1",
           title:
             "Start the stand-up right on time at 8:00am! (This time should not change regardless of when other people will be arriving.)",
-          icon: "✔️",
+          icon: "1️⃣",
         },
         {
           id: "2",
           title:
             "Invite people to share something they’re leaving at the door.",
-          icon: "✔️",
+          icon: "2️⃣",
         },
         {
           id: "3",
           title: "Start the Mediation Guide you selected earlier.",
-          icon: "✔️",
+          icon: "3️⃣",
         },
         {
           id: "4",
           title:
             "After mediation, ask if anyone has anything special to share about what they worked on or how they did the evening before.",
-          icon: "✔️",
+          icon: "4️⃣",
         },
         {
           id: "5",
           title: "Enumerate all items in the day’s schedule.",
-          icon: "✔️",
+          icon: "5️⃣",
         },
         {
           id: "6",
           title: "Announce any mentors that are available for the day.",
-          icon: "✔️",
+          icon: "6️⃣",
         },
         {
           id: "7",
           title: "Ask if there are any questions.",
-          icon: "✔️",
+          icon: "7️⃣",
         },
         {
           id: "8",
           title: "Share any announcements.",
-          icon: "✔️",
+          icon: "8️⃣",
         },
       ];
       setMorningGuide(morningguide);
