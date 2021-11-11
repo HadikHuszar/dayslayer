@@ -5,9 +5,10 @@ import { Routes, Route } from "react-router-dom";
 
 // import calendarJson from "../Calendar";
 import backgroundVideo from "../assets/intro.mp4";
+import Button from "@mui/material/Button";
+import LoginIcon from "@mui/icons-material/Login";
 import Nav from "../Nav";
 import Tasks from "../Tasks";
-import VerticalLinearStepper from "../Tasks/stepper";
 import Guide from "../Guide";
 import useApi from "../auth/useApi";
 import useAuth0 from "../auth/useAuth0";
@@ -30,7 +31,9 @@ const App = () => {
     return (
       <main className="unauth-container">
         <div className="login-btn">
-          <Login />
+          <Button variant="contained" size="large" endIcon={<LoginIcon />}>
+            <Login />
+          </Button>
         </div>
         <video autoPlay muted className="hero-video">
           <source src={backgroundVideo} type="video/mp4" />
