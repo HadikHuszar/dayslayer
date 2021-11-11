@@ -110,6 +110,8 @@ Users should be able to...
 
 ## **App Screen Captures**
 
+
 ![Intro_Screen_DAYSLAYER](<img src="/app/images/IntroScreen.png" width="300px">)
+
 
 ![Login_Screen_DAYSLAYER](<img src="/app/images/LoginScreen.png" width="300px">)
