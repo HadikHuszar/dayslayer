@@ -1,9 +1,26 @@
 #welcome {
   position: fixed;
-  top: 300px;
+  top: 270px;
   left: 300px;
   font-family: Qwigley;
   font-size: 48px;
+}
+#goodbye {
+  position: fixed;
+  top: 580px;
+  left: 300px;
+  font-family: Qwigley;
+  font-size: 48px;
+}
+
+#intro {
+  position: fixed;
+  top: 320px;
+  left: 300px;
+  font-family: Roboto;
+  font-size: 22px;
+  color: rgb(105, 97, 97);
+  line-height: 32px;
 }
 
 .unauth-container {

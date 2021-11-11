@@ -3,8 +3,6 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
-import Checkbox from "@mui/material/Checkbox";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import QueuePlayNextIcon from "@mui/icons-material/QueuePlayNext";
 import SendIcon from "@mui/icons-material/Send";
 import Step from "@mui/material/Step";
@@ -74,19 +72,19 @@ const steps = [
   {
     label: "Code Challenge Guide",
     description: "Pull Items for the Guide for Code Challenges",
-    button: `Display Morning Stand-Up Guide`,
+    button: `Display Code Challenge Guide`,
     action: (e, { setCodeGuide, setCurrentGuide }) => {
       const codeguide = [
         {
           id: "1",
           title: "Call on people to share their solutions.",
-          icon: "✔️",
+          icon: "1️⃣",
         },
         {
           id: "2",
           title:
             "Make sure that everyone has shared about the same amount of times during the week.",
-          icon: "✔️",
+          icon: "2️⃣",
         },
       ];
       setCodeGuide(codeguide);
@@ -103,46 +101,58 @@ const steps = [
           id: "1",
           title:
             "Time should not change regardless of when other people can make it.",
-          icon: "✔️",
+          icon: "1️⃣",
         },
         {
           id: "2",
           title:
             "Ask how the day went and if anyone has anything to quickly share.",
-          icon: "✔️",
+          icon: "2️⃣",
         },
         {
           id: "3",
           title:
             "Ask how the day went and have people think about what they want to share.",
-          icon: "✔️",
+          icon: "3️⃣",
         },
         {
           id: "4",
           title: "Put the list of team members into the chat.",
-          icon: "✔️",
+          icon: "4️⃣",
         },
         {
           id: "5",
           title:
             "Call on the first team member to share, summarizing in one minute their Rose-Bud-Thorn for the day.",
-          icon: "✔️",
+          icon: "5️⃣",
         },
         {
           id: "6",
           title:
             "Try to give feedback from each particpant as a sequeway to the next team member.",
-          icon: "✔️",
+          icon: "6️⃣",
         },
         {
           id: "7",
           title: "Ask if there are any questions.",
-          icon: "✔️",
+          icon: "7️⃣",
         },
         {
           id: "8",
           title: "Share any announcements.",
-          icon: "✔️",
+          icon: "8️⃣",
+        },
+        {
+          id: "9",
+          title:
+            "Thank everyone for their hard work.  Remind everyone to get rest and stay away from the computer tonight.",
+          icon: "9️⃣",
+        },
+        {
+          id: "10",
+          title:
+            "Remind them to fill out the Retro Form before they sign-off for the evening.",
+          icon: "🔟",
         },
       ];
       setWrapUpGuide(wrapupguide);
@@ -151,20 +161,20 @@ const steps = [
   },
   {
     label: "Soft Skills Day Guide",
-    description: `Generate the inspirational quote for the day.`,
+    description: `Pull Items for the Soft Skills Guide.`,
     button: `Display Soft Skills Day Guide`,
     action: (e, { setSoftSkillsGuide, setCurrentGuide }) => {
       const softskills = [
         {
           id: "1",
           title: "Call on people to share their solutions.",
-          icon: "✔️",
+          icon: "1️⃣",
         },
         {
           id: "2",
           title:
             "Make sure that everyone has shared about the same amount of times during the week.",
-          icon: "✔️",
+          icon: "2️⃣",
         },
       ];
       setSoftSkillsGuide(softskills);
@@ -173,68 +183,62 @@ const steps = [
   },
   {
     label: "Visiting Speaker Interviewing Guide",
-    description: `Add discussion threads automatically here.`,
-    button: `Display Wrap-Up Guide`,
+    description: `Pull Items for the Interview Guide.`,
+    button: `Display Interview Guide`,
     action: (e, { setInterviewGuide, setCurrentGuide }) => {
       const interview = [
         {
           id: "1",
           title: "Welcome everyone.",
-          icon: "✔️",
+          icon: "1️⃣",
         },
         {
           id: "2",
           title:
             "Thank the guest speaker for making themselves available for this discussion.",
-          icon: "✔️",
+          icon: "2️⃣",
         },
         {
           id: "3",
           title: "Lead the interview with the following questions:",
-          icon: "✔️",
+          icon: "3️⃣",
         },
         {
           id: "4",
           title: "Please give us your elevator pitch introduction.",
-          icon: "✔️",
+          icon: "4️⃣",
         },
         {
           id: "5",
           title: "What type of challenges have you faced in your career?",
-          icon: "✔️",
+          icon: "5️⃣",
         },
         {
           id: "6",
           title:
             "What is good professional advice that you could share with us?",
-          icon: "✔️",
+          icon: "6️⃣",
         },
         {
           id: "7",
           title: "What has your career path looked like so far?",
-          icon: "✔️",
+          icon: "7️⃣",
         },
         {
           id: "8",
           title: "How does your past career complement your path in tech?",
-          icon: "✔️",
+          icon: "8️⃣",
         },
         {
           id: "9",
-          title:
-            "What forms of processing or venting do you recommend to underrepresented people in a corporate environment?",
-          icon: "✔️",
+          title: "Thank everyone for joining.",
+          icon: "9️⃣",
         },
         {
           id: "10",
-          title: "Thank everyone for joining.",
-          icon: "✔️",
-        },
-        {
-          id: "11",
           title:
             "Remind them to fill out the survey before they sign-off for the evening.",
-          icon: "✔️",
+          icon: "🔟",
         },
       ];
       setInterviewGuide(interview);
@@ -266,14 +270,14 @@ export default function VerticalLinearStepper2({
   };
 
   return (
-    <Box sx={{ maxWidth: 750 }}>
+    <Box sx={{ maxWidth: 750, ml: 10 }}>
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((step, index) => (
           <Step key={step.label}>
             <StepLabel
               optional={
                 index === 4 ? (
-                  <Typography variant="caption">Last step</Typography>
+                  <Typography variant="caption">Last Guide</Typography>
                 ) : null
               }
             >
@@ -326,7 +330,11 @@ export default function VerticalLinearStepper2({
         ))}
       </Stepper>
       {activeStep === steps.length && (
-        <Paper variant="outlined" elevation={0} sx={{ maxWidth: 350, p: 2 }}>
+        <Paper
+          variant="outlined"
+          elevation={0}
+          sx={{ maxWidth: 350, p: 2, backgroundColor: "#94b7dc" }}
+        >
           <Typography>All steps completed - you&apos;re finished!</Typography>
           <Button
             variant="contained"
