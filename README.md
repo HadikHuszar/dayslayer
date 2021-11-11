@@ -1,7 +1,6 @@
-# <img style="margin-left: -5px;" src="https://static.wixstatic.com/media/22d03e_faa72cd2e2da48a189937bb2af555ddf~mv2.png/v1/fill/w_159,h_58,al_c,q_85/22d03e_faa72cd2e2da48a189937bb2af555ddf~mv2.webp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lead the Day. Slay the Lead.™
+# <img style="margin-left: -5px;" src="https://static.wixstatic.com/media/22d03e_faa72cd2e2da48a189937bb2af555ddf~mv2.png/v1/fill/w_159,h_58,al_c,q_85/22d03e_faa72cd2e2da48a189937bb2af555ddf~mv2.webp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <sub><sub>**Lead the Day. Slay the Lead.**<sub>™</sub></sub></sub>
 
-[View DaySlayer™ Live](https://dayslayer.herokuapp.com/dashboard)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sub>\*_(See testing profiles below in the "To Use" section to sign in with.)_</sub>
+[View DaySlayer™ Live](https://dayslayer.herokuapp.com/dashboard)&nbsp;&nbsp;&nbsp;<sub>\*_(See testing profiles below in the "To Use" section to sign in with.)_</sub>
 
 [View DaySlayer™ Website](https://www.dayslayer.today/)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sub>\*_(Project information, including data schema, user-flow and wireframe.)_</sub>
 
@@ -110,6 +109,6 @@ Users should be able to...
 
 ## **App Screen Captures**
 
-![Intro_Screen_DAYSLAYER](<img src="/Users/HadikHuszar/src/dayslayer/app/images/IntroScreen.png" width="300px">)
+![Intro_Screen_DAYSLAYER](<img src="https://raw.githubusercontent.com/HadikHuszar/dayslayer/main/app/images/IntroScreen.png" width="300px">)
 
-![Login_Screen_DAYSLAYER](<img src="/Users/HadikHuszar/src/dayslayer/app/images/LoginScreen.png" width="300px">)
+![Login_Screen_DAYSLAYER](<img src="https://github.com/HadikHuszar/dayslayer/blob/main/app/images/LoginScreen.png" width="300px">)
