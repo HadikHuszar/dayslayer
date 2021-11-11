@@ -110,6 +110,6 @@ Users should be able to...
 
 ## **App Screen Captures**
 
-![Intro_Screen_DAYSLAYER](<img src="app/images/IntroScreen.png" width="300px">)
+![Intro_Screen_DAYSLAYER](<img src="https://github.com/HadikHuszar/dayslayer/blob/4db6670aae38e67556bae7055f2e976eb10a5340/app/images/IntroScreen.png" width="300px">)
 
-![Login_Screen_DAYSLAYER](<img src="app/images/LoginScreen.png" width="300px">)
+![Login_Screen_DAYSLAYER](<img src="https://github.com/HadikHuszar/dayslayer/blob/4db6670aae38e67556bae7055f2e976eb10a5340/app/images/LoginScreen.png" width="300px">)
