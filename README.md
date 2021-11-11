@@ -1,9 +1,11 @@
-# <img style="margin-left: -5px;" src="https://static.wixstatic.com/media/22d03e_faa72cd2e2da48a189937bb2af555ddf~mv2.png/v1/fill/w_159,h_58,al_c,q_85/22d03e_faa72cd2e2da48a189937bb2af555ddf~mv2.webp"><span align='right'> Lead the Day. Slay the Lead.™</span>
+# <img style="margin-left: -5px;" src="https://static.wixstatic.com/media/22d03e_faa72cd2e2da48a189937bb2af555ddf~mv2.png/v1/fill/w_159,h_58,al_c,q_85/22d03e_faa72cd2e2da48a189937bb2af555ddf~mv2.webp">
+
+<br><span align='right'> Lead the Day. Slay the Lead.™</span>
 
 [View DaySlayer™ Live](https://dayslayer.herokuapp.com/dashboard)  
-<font size="1" style="float: right; margin-top: -19px">\*_(Please look at the testing profiles below in the "To Use" section to sign in with.)_</font>
+<sub>\*_(Please look at the testing profiles below in the "To Use" section to sign in with.)_</sub>
 
-[View DaySlayer™ Website](https://www.dayslayer.today/)<font size="1" style="float: right; margin-top: 2px">\*_(Project information, including data schema, user-flow and wireframe.)_</font>
+[View DaySlayer™ Website](https://www.dayslayer.today/)<sub>\*_(Project information, including data schema, user-flow and wireframe.)_</sub>
 
 #
 
