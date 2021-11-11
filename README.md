@@ -1,4 +1,4 @@
-# <img style="margin-left: -5px;" src="https://static.wixstatic.com/media/22d03e_faa72cd2e2da48a189937bb2af555ddf~mv2.png/v1/fill/w_159,h_58,al_c,q_85/22d03e_faa72cd2e2da48a189937bb2af555ddf~mv2.webp"><font size="3" style="float: right; margin-top: 33px;"> Lead the Day. Slay the Lead.™</font>
+# <img style="margin-left: -5px;" src="https://static.wixstatic.com/media/22d03e_faa72cd2e2da48a189937bb2af555ddf~mv2.png/v1/fill/w_159,h_58,al_c,q_85/22d03e_faa72cd2e2da48a189937bb2af555ddf~mv2.webp"><font size="1" style="float: right; margin-top: 33px;"> Lead the Day. Slay the Lead.™</font>
 
 [View DaySlayer™ Live](https://dayslayer.herokuapp.com/dashboard)  
 <font size="1" style="float: right; margin-top: -19px">\*_(Please look at the testing profiles below in the "To Use" section to sign in with.)_</font>
@@ -110,6 +110,6 @@ Users should be able to...
 
 ## **App Screen Captures**
 
-![Intro_Screen_DAYSLAYER](<img src="images/Intro_Screen.png" width="300px">)
+![Intro_Screen_DAYSLAYER](<img src="app/images/Intro Screen.png" width="300px">)
 
-![Login_Screen_DAYSLAYER](<img src="images/Login_Screen.png" width="300px">)
+![Login_Screen_DAYSLAYER](<img src="app/images/Login_Screen.png" width="300px">)
