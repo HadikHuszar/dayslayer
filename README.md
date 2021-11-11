@@ -30,7 +30,7 @@ Since the app utilizes Single Sign On authentication, you can use your own Googl
 Alternatively, I have created a test account to avoid first-time authentication steps:
 
 Username: **testingdayslayer**@gmail.com <br>
-Password: **Leadthed@y**
+Password: **Leadthed@y!**
 
 #
 
@@ -72,8 +72,9 @@ Users should be able to...
 ## **Nice-to-Haves**
 
 1. Make the Step Function Non-Linear to allow a user to enter a multi-step flow at any point.
-2. Re-Factoring of Information for Mobile Layout.
-3. Management Panel to Control Automated Features.
+2. Have interactive checkmarks that mark-off each item in guide.
+3. Re-Factoring of Information for Mobile Layout.
+4. Management Panel to Control Automated Features.
 
 #
 

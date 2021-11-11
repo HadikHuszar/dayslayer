@@ -6,11 +6,11 @@ html {
   box-sizing: border-box;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
+// *,
+// *:before,
+// *:after {
+//   box-sizing: inherit;
+// }
 
 h1 {
   font-size: 1.25rem;
@@ -47,7 +47,7 @@ main {
 
 body {
   background-position: center;
-  background-image: url("/assets/marbles_2000.jpeg");
+  background-image: url("/assets/marbles_2000_2.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   width: 100vw;
@@ -55,11 +55,10 @@ body {
 }
 
 #biline {
-  position: absolute;
+  position: fixed;
   font-family: "Roboto", sans-serif;
-  color: rgb(0, 0, 0);
-  font-size: 24px;
-  top: 970px;
-  left: 1200px;
-  color: rgb(20, 35, 123);
+  color: rgb(91, 86, 86);
+  font-size: 12px;
+  top: 1030px;
+  right: 20px;
 }

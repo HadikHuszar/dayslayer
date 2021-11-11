@@ -2,7 +2,11 @@ import * as React from "react";
 
 import useApi from "../auth/useApi";
 import useAuth0 from "../auth/useAuth0";
-import Checkbox from "@mui/material/Checkbox";
+import AssessmentIcon from "@mui/icons-material/Assessment";
+import DescriptionIcon from "@mui/icons-material/Description";
+import FolderSharedIcon from "@mui/icons-material/FolderShared";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
 import VerticalLinearStepper2 from "./stepper";
 
 import styles from "./styles.guide.scss";
@@ -94,10 +98,8 @@ const Guides = () => {
 const MorningGuide = ({ morningguide }) => (
   <ul>
     <span id="calendarlist-date">
-      <span role="img" aria-label="sun emoji">
-        ☀️ &nbsp;
-      </span>
-      MORNING GUIDE for{" "}
+      <MenuBookIcon sx={{ mb: -1, mr: 2 }} />
+      MORNING STAND-UP GUIDE for{" "}
       <span>
         :&nbsp;&nbsp;
         {new Date().toLocaleDateString("en-US", "long")}
@@ -111,9 +113,7 @@ const MorningGuide = ({ morningguide }) => (
     ))}
     <p>
       <span>
-        <span role="img" aria-label="sun emoji">
-          🧘‍♂️ &nbsp;
-        </span>
+        <SelfImprovementIcon sx={{ mb: -0.5, mr: 1 }} />
         Meditation Guide &nbsp;
         <a href={"https://youtu.be/SEfs5TJZ6Nk"} target="_blank">
           (full-screen link):
@@ -137,6 +137,14 @@ const MorningGuide = ({ morningguide }) => (
 
 const CodeGuide = ({ codeguide }) => (
   <ul>
+    <span id="calendarlist-date">
+      <MenuBookIcon sx={{ mb: -1, mr: 2 }} />
+      CODE CHALLENGE GUIDE for
+      <span>
+        :&nbsp;&nbsp;
+        {new Date().toLocaleDateString("en-US", "long")}
+      </span>
+    </span>
     {codeguide.map(({ id, title, date, start, end, icon }) => (
       <li key={id}>
         <span id="calendarlist-icon">{icon}</span>
@@ -145,17 +153,14 @@ const CodeGuide = ({ codeguide }) => (
     ))}
     <p>
       <span>
-        <span role="img" aria-label="sun emoji">
-          🧘‍♂️ &nbsp;
-        </span>
-        Sharing Tracker &nbsp;
+        <FolderSharedIcon sx={{ mb: -0.5, mr: 1 }} />
         <a
           href={
             "https://docs.google.com/spreadsheets/d/1K0X9jcksJpjX6SHI-wbiRuX3-wPNbIlDp0eQytP1dPY/edit#gid=0"
           }
           target="_blank"
         >
-          (full-screen link):
+          Group Sharing Tracker
         </a>
         &nbsp;&nbsp;
       </span>
@@ -166,10 +171,8 @@ const CodeGuide = ({ codeguide }) => (
 const WrapUpGuide = ({ wrapupguide }) => (
   <ul>
     <span id="calendarlist-date">
-      <span role="img" aria-label="sun emoji">
-        ☀️ &nbsp;
-      </span>
-      WRAP-UP GUIDE for
+      <MenuBookIcon sx={{ mb: -1, mr: 2 }} />
+      DAILY WRAP-UP GUIDE for
       <span>
         :&nbsp;&nbsp;
         {new Date().toLocaleDateString("en-US", "long")}
@@ -181,11 +184,33 @@ const WrapUpGuide = ({ wrapupguide }) => (
         <span id="calendarlist-title">{title}</span>
       </li>
     ))}
+    <p>
+      <span>
+        <DescriptionIcon sx={{ mb: -0.5, mr: 1 }} />
+        <a
+          href={
+            "https://docs.google.com/spreadsheets/d/13zwG6TTaClYG1VLe9xkJAUAsN_yrK7XCdmHQgkUL0Po/edit#gid=0"
+          }
+          target="_blank"
+        >
+          Retro Form
+        </a>
+        &nbsp;&nbsp;
+      </span>
+    </p>
   </ul>
 );
 
 const SoftSkillsGuide = ({ softskills }) => (
   <ul>
+    <span id="calendarlist-date">
+      <MenuBookIcon sx={{ mb: -1, mr: 2 }} />
+      SOFT SKILL DAY DISCUSSION GUIDE for
+      <span>
+        :&nbsp;&nbsp;
+        {new Date().toLocaleDateString("en-US", "long")}
+      </span>
+    </span>
     {softskills.map(({ id, title, icon, link }) => (
       <li key={id}>
         <span id="calendarlist-icon">{icon}</span>
@@ -200,6 +225,14 @@ const SoftSkillsGuide = ({ softskills }) => (
 
 const InterviewGuide = ({ interview }) => (
   <ul>
+    <span id="calendarlist-date">
+      <MenuBookIcon sx={{ mb: -1, mr: 2 }} />
+      INTERVIEW GUIDE for
+      <span>
+        :&nbsp;&nbsp;
+        {new Date().toLocaleDateString("en-US", "long")}
+      </span>
+    </span>
     {interview.map(({ id, title, icon }) => (
       <li key={id}>
         <span id="calendarlist-icon">{icon}</span>
@@ -208,17 +241,14 @@ const InterviewGuide = ({ interview }) => (
     ))}
     <p>
       <span>
-        <span role="img" aria-label="sun emoji">
-          🧘‍♂️ &nbsp;
-        </span>
-        Weekly Survey &nbsp;
+        <AssessmentIcon sx={{ mb: -0.5, mr: 1 }} />
         <a
           href={
             "https://docs.google.com/forms/d/e/1FAIpQLScd4uVRaUiPSRGHqvBSzFmFekrSW2BFeySquldEymWwbyIffw/viewform"
           }
           target="_blank"
         >
-          (full-screen link):
+          Weekly Survey
         </a>
         &nbsp;&nbsp;
       </span>
