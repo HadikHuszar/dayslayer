@@ -6,7 +6,17 @@ import useAuth0 from "./useAuth0";
 export const Login = () => {
   const { loginWithRedirect } = useAuth0();
 
-  return <button onClick={() => loginWithRedirect()}>Log in</button>;
+  return (
+    <span
+      role="button"
+      tabIndex="0"
+      on
+      onKeyDown={() => loginWithRedirect()}
+      onClick={() => loginWithRedirect()}
+    >
+      Log in
+    </span>
+  );
 };
 
 export const Logout = () => {

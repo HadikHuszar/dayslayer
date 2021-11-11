@@ -11,10 +11,20 @@
   // height: 100vh;
 
   .hero-video {
-    position: fixed;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-size: cover;
+
     z-index: -1;
     // width: 100vw;
     width: auto;
     height: 100vh;
+  }
+
+  .login-btn {
+    position: absolute;
+    top: 450px;
+    left: 1030px;
   }
 }
