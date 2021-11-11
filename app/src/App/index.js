@@ -4,13 +4,15 @@ import Moment from "react-moment";
 import { Routes, Route } from "react-router-dom";
 
 // import calendarJson from "../Calendar";
+import backgroundVideo from "../assets/intro.mp4";
 import Nav from "../Nav";
 import Tasks from "../Tasks";
 import VerticalLinearStepper from "../Tasks/stepper";
-import Guide from "../Team";
+import Guide from "../Guide";
 import useApi from "../auth/useApi";
 import useAuth0 from "../auth/useAuth0";
 import { Protected } from "../auth/widgets";
+import { Login, Logout } from "../auth/widgets";
 
 import "./styles.app.scss";
 
@@ -24,22 +26,26 @@ const App = () => {
     }
   }, [isAuthenticated, user, loading, apiClient]);
 
-  return (
-    <>
-      <header>
-        <Nav />
-      </header>
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<Protected component={Tasks} />} />
-          <Route path="/guide" element={<Guide />} />
-        </Routes>
+  if (!isAuthenticated) {
+    return (
+      <main className="unauth-container">
+        <div className="login-btn">
+          <Login />
+        </div>
+        <video autoPlay muted className="hero-video">
+          <source src={backgroundVideo} type="video/mp4" />
+          <track default kind="captions" srcLang="en" />
+        </video>
       </main>
-      <footer>
-        <span id="biline">{process.env.REACT_APP_SUBTITLE}&trade;</span>
-      </footer>
-    </>
+    );
+  }
+
+  return (
+    <Routes>
+      <Route path="/" element={<Protected component={Guide} />} />
+      <Route path="/dashboard" element={<Protected component={Tasks} />} />
+      <Route path="/guide" element={<Protected component={Guide} />} />
+    </Routes>
   );
 };
 
@@ -47,29 +53,11 @@ const Home = () => {
   const { isAuthenticated, user, getAccessTokenSilently, getIdTokenClaims } =
     useAuth0();
 
-  React.useEffect(() => {
-    if (isAuthenticated) {
-      console.log("user information", user);
-    }
-  }, [isAuthenticated]);
-
-  if (!isAuthenticated) {
-    return <h1>Please log in</h1>; /// put something else
-  }
-
   return (
     <>
       <span id="welcome">Hello, {user.given_name} !</span>
     </>
   );
 };
-
-// const Tasks = () => {
-//   const { isAuthenticated } = useAuth0();
-
-//   return <>{isAuthenticated ? <Tasks /> : null}</>;
-// };
-
-// const Dashboard = () => <h1>Dashboard</h1>;
 
 export default App;

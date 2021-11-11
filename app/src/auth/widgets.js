@@ -1,4 +1,5 @@
 import { withAuthenticationRequired } from "@auth0/auth0-react";
+import Page from "../Page";
 
 import useAuth0 from "./useAuth0";
 
@@ -20,5 +21,9 @@ export const Logout = () => {
 
 export const Protected = ({ component, ...props }) => {
   const Component = withAuthenticationRequired(component);
-  return <Component {...props} />;
+  return (
+    <Page>
+      <Component {...props} />
+    </Page>
+  );
 };
