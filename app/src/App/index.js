@@ -45,7 +45,8 @@ const App = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<Protected component={Guide} />} />
+      {/* <Route path="/" element={<Protected component={Guide} />} /> */}
+      <Route path="/" element={<Protected component={Home} />} />
       <Route path="/dashboard" element={<Protected component={Tasks} />} />
       <Route path="/guide" element={<Protected component={Guide} />} />
     </Routes>

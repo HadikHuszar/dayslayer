@@ -33,7 +33,7 @@ const steps = [
           link: "https://zoom.us/j/91272177622?pwd=WmVRbDk1eUs0SnpGQVhubXJZV0FOdz09",
           copyableText:
             // "☕️ Daily Morning Stand-Up [Zoom](https://zoom.us/j/91272177622?pwd=WmVRbDk1eUs0SnpGQVhubXJZV0FOdz09)",
-            "☕️ Daily Morning Stand-Up [Zoom](`https://zoom.us/j/91272177622?pwd=WmVRbDk1eUs0SnpGQVhubXJZV0FOdz09`)",
+            "☕️ Daily Morning Stand-Up (https://zoom.us/j/91272177622?pwd=WmVRbDk1eUs0SnpGQVhubXJZV0FOdz09)",
         },
         {
           id: "2",
@@ -43,7 +43,7 @@ const steps = [
           end: `5:00 PM`,
           icon: "🖥",
           link: "https://zoom.us/j/91272177622?pwd=WmVRbDk1eUs0SnpGQVhubXJZV0FOdz09",
-          copyableText: `🖥  Final Project Demos! [Zoom](https://zoom.us/j/91272177622?pwd=WmVRbDk1eUs0SnpGQVhubXJZV0FOdz09)`,
+          copyableText: `🖥  Final Project Demos! (https://zoom.us/j/91272177622?pwd=WmVRbDk1eUs0SnpGQVhubXJZV0FOdz09)`,
         },
         // {
         //   id: "3",
@@ -115,7 +115,7 @@ const steps = [
           title: "3-Min Mindful Breathing",
           icon: "🧘‍♂️",
           link: "https://youtu.be/SEfs5TJZ6Nk",
-          copyableText: `🧘‍♂️  3-Min Mindful Breathing  [Video Link](https://youtu.be/SEfs5TJZ6Nk)`,
+          copyableText: `🧘‍♂️  3-Min Mindful Breathing  (https://youtu.be/SEfs5TJZ6Nk)`,
         },
       ];
       setMeditation(meditation);
@@ -194,13 +194,13 @@ export default function VerticalLinearStepper({
   };
 
   return (
-    <Box sx={{ maxWidth: 650 }}>
-      <Stepper activeStep={activeStep} orientation="vertical">
+    <Box sx={{ maxWidth: 650, ml: 10 }}>
+      <Stepper activeStep={activeStep} nonLinear orientation="vertical">
         {steps.map((step, index) => (
           <Step key={step.label}>
             <StepLabel
               optional={
-                index === 4 ? (
+                index === 5 ? (
                   <Typography variant="caption">Last step</Typography>
                 ) : null
               }
@@ -256,7 +256,7 @@ export default function VerticalLinearStepper({
         <Paper
           variant="outlined"
           elevation={0}
-          sx={{ maxWidth: 750, p: 2, backgroundColor: "#9fc6e9" }}
+          sx={{ maxWidth: 750, p: 2, backgroundColor: "#94b7dc" }}
         >
           <Typography>
             All steps completed &mdash;

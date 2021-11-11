@@ -13,7 +13,7 @@
   grid-gap: 20px;
   justify-items: stretch;
 
-  .tasks-container {
+  #tasks-container {
     width: 100%;
     height: 100%;
     li {
@@ -35,25 +35,25 @@
     box-shadow: inset 0 12.5px 10px rgba(0, 0, 0, 0.06),
       0 22.3px 17.9px rgba(0, 0, 0, 0.22);
     z-index: 0;
-    background: #63a9e7 !important;
+    background: #84bcf4;
     opacity: 0.9;
     padding: 3rem;
 
-    .tasks-container-toolslist {
+    #tasks-container-toolslist {
       font-family: "Roboto", sans-serif;
-      color: rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
       font-size: 15px;
     }
   }
 
-  .tasks-container-title {
+  #tasks-container-title {
     font-family: "Rock Salt", sans-serif;
-    color: rgb(0, 0, 0);
+    color: rgb(110, 125, 172);
     font-size: 18px;
     text-align: center;
   }
 
-  .workspace-container {
+  #workspace-container {
     width: 100%;
     height: 100%;
     box-sizing: border-box; /* or not */
@@ -67,11 +67,11 @@
     padding: 3rem;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
     font-size: 30px;
-    color: rgb(255, 255, 255);
-  }
-  .workspace-title {
-    font-family: "Rock Salt", sans-serif;
     color: rgb(0, 0, 0);
+  }
+  #workspace-title {
+    font-family: "Rock Salt", sans-serif;
+    color: rgb(110, 125, 172);
     font-size: 18px;
     font-size: 18px;
     text-align: center;
@@ -79,7 +79,7 @@
 
   #workspace-toolslist {
     font-family: "Roboto", sans-serif;
-    color: rgb(233, 232, 244);
+    color: rgb(0, 0, 0);
   }
 
   #calendarlist-title {
