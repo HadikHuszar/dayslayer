@@ -62,10 +62,10 @@ const Tasks = () => {
   return loading ? null : (
     <section className="generator-container">
       <div>
-        <div className="workspace-title">
+        <div id="workspace-title">
           {user.given_name} , this is your input ...
         </div>
-        <section className="workspace-container">
+        <section id="workspace-container">
           <span id="workspace-toolslist">
             <VerticalLinearStepper
               setEvents={setEvents}
@@ -80,9 +80,9 @@ const Tasks = () => {
         </section>
       </div>
       <div>
-        <div className="tasks-container-title">This is your output...</div>
-        <section className="tasks-container">
-          <span className="tasks-container-toolslist">
+        <div id="tasks-container-title">This is your output...</div>
+        <section id="tasks-container">
+          <span id="tasks-container-toolslist">
             <CalendarList events={events} />
             <MentorList mentors={mentors} />
             <PairsList pairs={pairs} />
