@@ -2,21 +2,30 @@ import * as React from "react";
 
 import useApi from "../auth/useApi";
 import useAuth0 from "../auth/useAuth0";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import VerticalLinearStepper from "./stepper";
+import Checkbox from "@mui/material/Checkbox";
+import VerticalLinearStepper2 from "./stepper";
 
 import styles from "./styles.guide.scss";
 // import Typography from "@mui/material/Typography";
 
-const Tasks = () => {
+export const GuideType = {
+  MORNING: "morning",
+  CODE: "code",
+  WRAPUP: "wrapup",
+  SOFTSKILLS: "softskills",
+  INTERVIEW: "interview",
+};
+
+const Guides = () => {
   const [tasks, setTasks] = React.useState([]);
   const { loading, apiClient } = useApi();
   const { isAuthenticated, user } = useAuth0();
-  const [events, setEvents] = React.useState([]);
-  const [mentors, setMentors] = React.useState([]);
-  const [threads, setThreads] = React.useState([]);
-  const [meditation, setMeditation] = React.useState([]);
-  const [quote, setQuote] = React.useState({});
+  const [morningguide, setMorningGuide] = React.useState([]);
+  const [codeguide, setCodeGuide] = React.useState([]);
+  const [wrapupguide, setWrapUpGuide] = React.useState([]);
+  const [softskills, setSoftSkillsGuide] = React.useState([]);
+  const [interview, setInterviewGuide] = React.useState([]);
+  const [currentGuide, setCurrentGuide] = React.useState();
 
   const loadTasks = React.useCallback(
     async () => setTasks(await apiClient.getTasks()),
@@ -30,65 +39,53 @@ const Tasks = () => {
     !loading && loadTasks();
   }, [loading, loadTasks]);
 
-  const generateCopyableString = () => {
-    return [...events, ...mentors, ...meditation, ...threads, quote]
-      .map((data) => data.copyableText)
-      .filter((data) => data !== undefined)
-      .join("\n");
-  };
+  console.log("currentGuide", currentGuide);
 
-  const dynamicallyGenerateString = () => {
-    const parsedEventStrings = events.map(
-      (event) => `${event.date}: ${event.title}\n`,
-    );
-    //parsed mentors
-    // parsed medidiation
-    // threads
-    // parsed quote
+  const renderCurrentGuide = () => {
+    if (!currentGuide) {
+      return null;
+    }
 
-    // [...parsedEventStrings, ...parsedMentorStrings, ...parsedMeditationStrings, ...parsedThreadStrings]
-    //   .filter((data) => data !== undefined)
-    //   .join("\n");
+    if (currentGuide === GuideType.MORNING) {
+      return <MorningGuide morningguide={morningguide} />;
+    } else if (currentGuide === GuideType.CODE) {
+      return <CodeGuide codeguide={codeguide} />;
+    } else if (currentGuide === GuideType.WRAPUP) {
+      return <WrapUpGuide wrapupguide={wrapupguide} />;
+    } else if (currentGuide === GuideType.SOFTSKILLS) {
+      return <SoftSkillsGuide softskills={softskills} />;
+    } else if (currentGuide === GuideType.INTERVIEW) {
+      return <InterviewGuide interview={interview} />;
+    }
   };
 
   return loading ? null : (
     <section className="generator-container">
       <div>
         <div className="workspace-title">
-          {user.given_name} , this is your input ...
+          {user.given_name} , here are your guides ...
         </div>
         <section className="workspace-container">
           <span id="workspace-toolslist">
-            <VerticalLinearStepper
-              setEvents={setEvents}
-              setMentors={setMentors}
-              setThreads={setThreads}
-              setMeditation={setMeditation}
-              setQuote={setQuote}
-              generateCopyableString={generateCopyableString}
+            <VerticalLinearStepper2
+              setMorningGuide={setMorningGuide}
+              setCodeGuide={setCodeGuide}
+              setWrapUpGuide={setWrapUpGuide}
+              setSoftSkillsGuide={setSoftSkillsGuide}
+              setInterviewGuide={setInterviewGuide}
+              setCurrentGuide={setCurrentGuide}
             />
           </span>
         </section>
       </div>
       <div>
-        <div className="tasks-container-title">This is your output...</div>
+        <div className="tasks-container-title">
+          This is the guide you selected...
+        </div>
         <section className="tasks-container">
-          <span id="copy">
-            <CopyToClipboard
-              text={generateCopyableString()}
-              onCopy={() => console.log("copied")}
-            >
-              <button>Copy to Clipboard</button>
-            </CopyToClipboard>
-          </span>
           <span className="tasks-container-toolslist">
-            <CalendarList events={events} />
-            <MentorList mentors={mentors} />
-            <MeditationList meditation={meditation} />
-            <ThreadsList threads={threads} />
-            <QuoteList quote={quote} />
-            <TaskList {...{ tasks }} deleteTask={deleteTask} />
-            <AddTask {...{ addTask }} />
+            {renderCurrentGuide()}
+            {/* <AddTask {...{ addTask }} /> */}
           </span>
         </section>
       </div>
@@ -96,46 +93,91 @@ const Tasks = () => {
   );
 };
 
-const CalendarList = ({ events }) => (
+const MorningGuide = ({ morningguide }) => (
   <ul>
     <span id="calendarlist-date">
       <span role="img" aria-label="sun emoji">
         ☀️ &nbsp;
       </span>
-      Today's date is: {new Date().toLocaleDateString()}
+      MORNING GUIDE for{" "}
+      <span>
+        :&nbsp;&nbsp;
+        {new Date().toLocaleDateString("en-US", "long")}
+      </span>
     </span>
-    {events.map(({ id, title, date, start, end, icon, link }) => (
+    {morningguide.map(({ id, title, start, end, icon, link }) => (
       <li key={id}>
         <span id="calendarlist-icon">{icon}</span>
-        <span id="calendarlist-times">
-          {start} - {end}:&nbsp;&nbsp;
-        </span>
         <span id="calendarlist-title">{title}</span>
-        <a href={link} onClick={link} target="_blank">
-          (Zoom)
+      </li>
+    ))}
+    <p>
+      <span>
+        <span role="img" aria-label="sun emoji">
+          🧘‍♂️ &nbsp;
+        </span>
+        Meditation Guide &nbsp;
+        <a href={"https://youtu.be/SEfs5TJZ6Nk"} target="_blank">
+          (full-screen link):
         </a>
-      </li>
-    ))}
+        &nbsp;&nbsp;
+      </span>
+
+      <iframe
+        iframe
+        width="230"
+        height="150"
+        src="https://www.youtube.com/embed/SEfs5TJZ6Nk"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </p>
   </ul>
 );
 
-const MentorList = ({ mentors }) => (
+const CodeGuide = ({ codeguide }) => (
   <ul>
-    {mentors.map(({ id, title, date, start, end, icon }) => (
+    {codeguide.map(({ id, title, date, start, end, icon }) => (
       <li key={id}>
         <span id="calendarlist-icon">{icon}</span>
-        <span id="calendarlist-times">
-          {start} - {end}:&nbsp;&nbsp;
+        <span id="calendarlist-title">{title}</span>
+      </li>
+    ))}
+    <p>
+      <span>
+        <span role="img" aria-label="sun emoji">
+          🧘‍♂️ &nbsp;
         </span>
-        <span id="calendarlist-title">{title}</span>
-      </li>
-    ))}
+        Sharing Tracker &nbsp;
+        <a
+          href={
+            "https://docs.google.com/spreadsheets/d/1K0X9jcksJpjX6SHI-wbiRuX3-wPNbIlDp0eQytP1dPY/edit#gid=0"
+          }
+          target="_blank"
+        >
+          (full-screen link):
+        </a>
+        &nbsp;&nbsp;
+      </span>
+    </p>
   </ul>
 );
 
-const ThreadsList = ({ threads }) => (
+const WrapUpGuide = ({ wrapupguide }) => (
   <ul>
-    {threads.map(({ id, title, icon }) => (
+    <span id="calendarlist-date">
+      <span role="img" aria-label="sun emoji">
+        ☀️ &nbsp;
+      </span>
+      WRAP-UP GUIDE for
+      <span>
+        :&nbsp;&nbsp;
+        {new Date().toLocaleDateString("en-US", "long")}
+      </span>
+    </span>
+    {wrapupguide.map(({ id, title, icon }) => (
       <li key={id}>
         <span id="calendarlist-icon">{icon}</span>
         <span id="calendarlist-title">{title}</span>
@@ -144,9 +186,9 @@ const ThreadsList = ({ threads }) => (
   </ul>
 );
 
-const MeditationList = ({ meditation }) => (
+const SoftSkillsGuide = ({ softskills }) => (
   <ul>
-    {meditation.map(({ id, title, icon, link }) => (
+    {softskills.map(({ id, title, icon, link }) => (
       <li key={id}>
         <span id="calendarlist-icon">{icon}</span>
         <span id="calendarlist-title">{title}</span>
@@ -158,11 +200,32 @@ const MeditationList = ({ meditation }) => (
   </ul>
 );
 
-const QuoteList = ({ quote: { quotation, author } }) => (
-  <span>
-    <span id="calendarlist-icon">{quotation}</span>
-    <span id="calendarlist-title">{author}</span>
-  </span>
+const InterviewGuide = ({ interview }) => (
+  <ul>
+    {interview.map(({ id, title, icon }) => (
+      <li key={id}>
+        <span id="calendarlist-icon">{icon}</span>
+        <span id="calendarlist-title">{title}</span>
+      </li>
+    ))}
+    <p>
+      <span>
+        <span role="img" aria-label="sun emoji">
+          🧘‍♂️ &nbsp;
+        </span>
+        Weekly Survey &nbsp;
+        <a
+          href={
+            "https://docs.google.com/forms/d/e/1FAIpQLScd4uVRaUiPSRGHqvBSzFmFekrSW2BFeySquldEymWwbyIffw/viewform"
+          }
+          target="_blank"
+        >
+          (full-screen link):
+        </a>
+        &nbsp;&nbsp;
+      </span>
+    </p>
+  </ul>
 );
 
 const TaskList = ({ tasks, deleteTask }) => (
@@ -209,4 +272,4 @@ const AddTask = ({ addTask }) => {
   );
 };
 
-export default Tasks;
+export default Guides;
