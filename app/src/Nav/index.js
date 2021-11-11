@@ -12,9 +12,9 @@ const Nav = () => (
       <img src={logo} width="159" height="58" alt="DaySlayer Logo" />
     </NavLink>
     <span id="navitems">
-      &nbsp;&nbsp; | &nbsp;&nbsp;<NavLink to="dashboard">Dashboard</NavLink>
+      &nbsp;&nbsp; | &nbsp;&nbsp;<NavLink to="/dashboard">Dashboard</NavLink>
       &nbsp;&nbsp;|&nbsp;&nbsp;
-      <NavLink to="guide">Guide</NavLink>
+      <NavLink to="/guide">Guide</NavLink>
     </span>
     <span id="loginid">
       <Auth />
