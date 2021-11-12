@@ -32,7 +32,7 @@ Since the app utilizes Single Sign On authentication, you can use your own Googl
 Alternatively, I have created a test account to avoid first-time authentication steps:
 
 Username: **testingdayslayer**@gmail.com <br>
-Password: **Leadthed@y!**
+Password: **Leadthed@y**
 
 #
 
