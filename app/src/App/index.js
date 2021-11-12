@@ -61,7 +61,7 @@ const Home = () => {
     <>
       <span id="welcome">Hello, {user.given_name} !</span>
       <span id="intro">
-        <p>You have no messages from you project leader for today.</p>
+        <p>You have no messages from your project leader for today.</p>
         <p>
           Thank you for leading the team today. This tool should help you to
           focus on empowering your team.<br></br>
