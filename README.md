@@ -105,8 +105,8 @@ Users should be able to...
   > In order to present a working prototype by project deadline, I had to create mock data in order demonstrate the core features of the app.
 
   > All of the structure is in place so that once the data starts flowing again from the calendar API, just a few lines of code change is required to make it work with all real data again.
-
-  <BR>
+  > <img src="app/images/mindful_bites_user_flow.png" width="500px">
+  > <BR>
 
 #
 
@@ -114,4 +114,6 @@ Users should be able to...
 
 ![Intro_Screen_DAYSLAYER](https://static.wixstatic.com/media/22d03e_05eb9a1383b3457093d0f2c2644095d5~mv2.png/v1/fill/w_600,h_368,al_c,q_85,usm_0.66_1.00_0.01/Intro%20Screen.webp)
 
-![Login_Screen_DAYSLAYER](app/images/Login Screen.png)
+![Login_Screen_DAYSLAYER](https://static.wixstatic.com/media/22d03e_05eb9a1383b3457093d0f2c2644095d5~mv2.png/v1/fill/w_600,h_368,al_c,q_85,usm_0.66_1.00_0.01/Intro%20Screen.webp)
+
+ <img src="app/images/LoginScreen.png" width="500px">
