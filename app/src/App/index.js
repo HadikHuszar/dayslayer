@@ -1,19 +1,15 @@
 import * as React from "react";
 
-// import Moment from "react-moment";
 import { Routes, Route } from "react-router-dom";
 
-// import calendarJson from "../Calendar";
 import backgroundVideo from "../assets/intro.mp4";
 import Button from "@mui/material/Button";
 import LoginIcon from "@mui/icons-material/Login";
-// import Nav from "../Nav";
 import Tasks from "../Tasks";
 import Guide from "../Guide";
 import useApi from "../auth/useApi";
 import useAuth0 from "../auth/useAuth0";
 import { Protected, Login } from "../auth/widgets";
-// import { Login, Logout } from "../auth/widgets";
 
 import "./styles.app.scss";
 

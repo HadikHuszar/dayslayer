@@ -4,8 +4,11 @@ import logo from "../assets/dayslayer_logo.png";
 import useAuth0 from "../auth/useAuth0";
 import { Login, Logout } from "../auth/widgets";
 
+import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
+import LoginIcon from "@mui/icons-material/Login";
 import styles from "./styles.nav.scss";
+import { blueGrey } from "@mui/material/colors";
 
 const navlinkClassname = ({ isActive }) => {
   console.log("styles:", styles);
@@ -48,13 +51,22 @@ const Auth = () => {
 
   return (
     <>
-      Hello, {user.given_name}
-      <span id="userpix">
-        <img src={user.picture} height="29" alt="" />
-      </span>
-      <br></br>
+      <span id="userpix">Hello, {user.given_name}</span>
+      <Avatar
+        src="/broken-image.jpg"
+        sx={{
+          bgcolor: "steelblue",
+          width: 24,
+          height: 24,
+          ml: 10,
+          mt: -2,
+          mb: 1,
+        }}
+      />
       <span id="log-button">
-        <Logout />
+        <Button variant="contained" size="small" endIcon={<LoginIcon />}>
+          <Logout />
+        </Button>
       </span>
     </>
   );

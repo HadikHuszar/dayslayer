@@ -11,7 +11,6 @@ import VerticalLinearStepper2 from "./stepper";
 
 import Checkbox from "@mui/material/Checkbox";
 import styles from "./styles.guide.scss";
-// import Typography from "@mui/material/Typography";
 
 export const GuideType = {
   MORNING: "morning",
