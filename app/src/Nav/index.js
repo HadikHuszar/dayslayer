@@ -7,6 +7,17 @@ import { Login, Logout } from "../auth/widgets";
 import Button from "@mui/material/Button";
 import styles from "./styles.nav.scss";
 
+const navlinkClassname = ({ isActive }) => {
+  console.log("styles:", styles);
+  if (isActive) {
+    // return styles["nav-link-selected"];
+    return "nav-link-selected";
+  } else {
+    return "nav-link";
+    // return styles["nav-link"];
+  }
+};
+
 const Nav = () => (
   <nav className={styles.nav}>
     <NavLink to="/" end>
@@ -14,11 +25,11 @@ const Nav = () => (
     </NavLink>
     <span id="navitems">
       &nbsp;&nbsp; | &nbsp;&nbsp;
-      <NavLink to="/dashboard">
+      <NavLink to="/dashboard" className={navlinkClassname}>
         <Button>Dashboard</Button>
       </NavLink>
       &nbsp;&nbsp;|&nbsp;&nbsp;
-      <NavLink to="/guide">
+      <NavLink to="/guide" className={navlinkClassname}>
         <Button>Guide</Button>
       </NavLink>
     </span>
