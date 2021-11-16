@@ -9,6 +9,7 @@ import MenuBookIcon from "@mui/icons-material/MenuBook";
 import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
 import VerticalLinearStepper2 from "./stepper";
 
+import Checkbox from "@mui/material/Checkbox";
 import styles from "./styles.guide.scss";
 // import Typography from "@mui/material/Typography";
 
@@ -30,6 +31,7 @@ const Guides = () => {
   const [softskills, setSoftSkillsGuide] = React.useState([]);
   const [interview, setInterviewGuide] = React.useState([]);
   const [currentGuide, setCurrentGuide] = React.useState();
+  const [isSelected, setIsSelected] = React.useState();
 
   const loadTasks = React.useCallback(
     async () => setTasks(await apiClient.getTasks()),
@@ -45,7 +47,7 @@ const Guides = () => {
 
   console.log("currentGuide", currentGuide);
 
-  const renderCurrentGuide = () => {
+  const renderCurrentGuide = (isSelected) => {
     if (!currentGuide) {
       return null;
     }
@@ -95,6 +97,30 @@ const Guides = () => {
   );
 };
 
+const DayslayerCheckbox = ({ id, title, icon }) => {
+  const [isChecked, setIsChecked] = React.useState(false);
+
+  const onCheck = React.useCallback(() => {
+    setIsChecked(!isChecked);
+  }, [isChecked]);
+
+  const selectedClassName = React.useMemo(() => {
+    let klassname = "calendarlist-title";
+    if (isChecked) {
+      klassname += " selected";
+    }
+    return klassname;
+  }, [isChecked]);
+
+  return (
+    <li key={id}>
+      <span id="calendarlist-icon">{icon}</span>
+      <Checkbox onChange={onCheck}> </Checkbox>
+      <span className={selectedClassName}>{title}</span>
+    </li>
+  );
+};
+
 const MorningGuide = ({ morningguide }) => (
   <ul>
     <span id="calendarlist-date">
@@ -105,11 +131,8 @@ const MorningGuide = ({ morningguide }) => (
         {new Date().toLocaleDateString("en-US", "long")}
       </span>
     </span>
-    {morningguide.map(({ id, title, start, end, icon, link }) => (
-      <li key={id}>
-        <span id="calendarlist-icon">{icon}</span>
-        <span id="calendarlist-title">{title}</span>
-      </li>
+    {morningguide.map(({ id, title, start, end, icon, link }, index) => (
+      <DayslayerCheckbox key={index} id={id} title={title} icon={icon} />
     ))}
     <p>
       <span>
@@ -145,11 +168,8 @@ const CodeGuide = ({ codeguide }) => (
         {new Date().toLocaleDateString("en-US", "long")}
       </span>
     </span>
-    {codeguide.map(({ id, title, date, start, end, icon }) => (
-      <li key={id}>
-        <span id="calendarlist-icon">{icon}</span>
-        <span id="calendarlist-title">{title}</span>
-      </li>
+    {codeguide.map(({ id, title, date, start, end, icon }, index) => (
+      <DayslayerCheckbox key={index} id={id} title={title} icon={icon} />
     ))}
     <p>
       <span>
@@ -178,11 +198,8 @@ const WrapUpGuide = ({ wrapupguide }) => (
         {new Date().toLocaleDateString("en-US", "long")}
       </span>
     </span>
-    {wrapupguide.map(({ id, title, icon }) => (
-      <li key={id}>
-        <span id="calendarlist-icon">{icon}</span>
-        <span id="calendarlist-title">{title}</span>
-      </li>
+    {wrapupguide.map(({ id, title, icon }, index) => (
+      <DayslayerCheckbox key={index} id={id} title={title} icon={icon} />
     ))}
     <p>
       <span>
@@ -211,14 +228,8 @@ const SoftSkillsGuide = ({ softskills }) => (
         {new Date().toLocaleDateString("en-US", "long")}
       </span>
     </span>
-    {softskills.map(({ id, title, icon, link }) => (
-      <li key={id}>
-        <span id="calendarlist-icon">{icon}</span>
-        <span id="calendarlist-title">{title}</span>
-        <a href={link} target="_blank">
-          (YouTube)
-        </a>
-      </li>
+    {softskills.map(({ id, title, icon, link }, index) => (
+      <DayslayerCheckbox key={index} id={id} title={title} icon={icon} />
     ))}
   </ul>
 );
@@ -233,11 +244,8 @@ const InterviewGuide = ({ interview }) => (
         {new Date().toLocaleDateString("en-US", "long")}
       </span>
     </span>
-    {interview.map(({ id, title, icon }) => (
-      <li key={id}>
-        <span id="calendarlist-icon">{icon}</span>
-        <span id="calendarlist-title">{title}</span>
-      </li>
+    {interview.map(({ id, title, icon }, index) => (
+      <DayslayerCheckbox key={index} id={id} title={title} icon={icon} />
     ))}
     <p>
       <span>
