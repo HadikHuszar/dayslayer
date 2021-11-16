@@ -26,7 +26,7 @@ const steps = [
         {
           id: "1",
           title: "Daily Morning Stand-Up",
-          date: `November 11, 2021`,
+          date: `November 16, 2021`,
           start: `8:00 AM`,
           end: `8:30 AM`,
           icon: "☕️",
@@ -37,13 +37,23 @@ const steps = [
         },
         {
           id: "2",
-          title: "Final Project Demos!",
-          date: `November 11, 2021`,
-          start: `3:30 PM`,
+          title: "Mock Interviews",
+          date: `November 16, 2021`,
+          start: `10:00 AM`,
+          end: `4:00 PM`,
+          icon: "🗣",
+          link: "https://zoom.us/j/91272177622?pwd=WmVRbDk1eUs0SnpGQVhubXJZV0FOdz09",
+          copyableText: `🗣 Mock Interviews (https://zoom.us/j/91272177622?pwd=WmVRbDk1eUs0SnpGQVhubXJZV0FOdz09)`,
+        },
+        {
+          id: "3",
+          title: "Daily Wrap Up",
+          date: `November 16, 2021`,
+          start: `4:00 PM`,
           end: `5:00 PM`,
           icon: "🖥",
           link: "https://zoom.us/j/91272177622?pwd=WmVRbDk1eUs0SnpGQVhubXJZV0FOdz09",
-          copyableText: `🖥  Final Project Demos! (https://zoom.us/j/91272177622?pwd=WmVRbDk1eUs0SnpGQVhubXJZV0FOdz09)`,
+          copyableText: `🌹 Daily Wrap Up (https://zoom.us/j/91272177622?pwd=WmVRbDk1eUs0SnpGQVhubXJZV0FOdz09)`,
         },
         // {
         //   id: "3",
@@ -51,7 +61,7 @@ const steps = [
         //   date: `November 11, 2021`,
         //   start: `3:30 PM`,
         //   end: `5:00 PM`,
-        //   // icon: 🧵 , 🍐, 💻 , ⌨️,  🖥 , 🔍 , 🎥
+        //   // icon: 🧵 , 🍐, 💻 , ⌨️,  🖥 , 🔍 , 🎥, 🎁, 🌹, ☕️
         // },
       ];
       setEvents(events);
@@ -150,13 +160,13 @@ const steps = [
           id: "1",
           title: "Final Project Demos",
           icon: "🧵",
-          copyableText: `🧵 Final Project Demos`,
+          copyableText: `🧵 Final Project Videos`,
         },
         {
           id: "2",
           title: "ReadMe File Questions",
           icon: "🧵",
-          copyableText: `🧵 ReadMe File Questions`,
+          copyableText: `🧵 1-Minute Pitch Questions`,
         },
         {
           id: "3",

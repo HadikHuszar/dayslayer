@@ -35,13 +35,13 @@ const steps = [
         },
         {
           id: "3",
-          title: "Start the Mediation Guide you selected earlier.",
+          title: "Start the Meditation Guide you selected earlier.",
           icon: "3️⃣",
         },
         {
           id: "4",
           title:
-            "After mediation, ask if anyone has anything special to share about what they worked on or how they did the evening before.",
+            "After meditation, ask if anyone has anything special to share about what they worked on or how they did the evening before.",
           icon: "4️⃣",
         },
         {
@@ -129,7 +129,7 @@ const steps = [
         {
           id: "6",
           title:
-            "Try to give feedback from each particpant as a sequeway to the next team member.",
+            "Try to give feedback from each participant as a sequeway to the next team member.",
           icon: "6️⃣",
         },
         {
@@ -205,28 +205,31 @@ const steps = [
         },
         {
           id: "4",
-          title: "Please give us your elevator pitch introduction.",
+          title:
+            "Question 1:  Please give us your elevator pitch introduction.",
           icon: "4️⃣",
         },
         {
           id: "5",
-          title: "What type of challenges have you faced in your career?",
+          title:
+            "Question 2:  What type of challenges have you faced in your career?",
           icon: "5️⃣",
         },
         {
           id: "6",
           title:
-            "What is good professional advice that you could share with us?",
+            "Question 3:  What is good professional advice that you could share with us?",
           icon: "6️⃣",
         },
         {
           id: "7",
-          title: "What has your career path looked like so far?",
+          title: "Question 4:  What has your career path looked like so far?",
           icon: "7️⃣",
         },
         {
           id: "8",
-          title: "How does your past career complement your path in tech?",
+          title:
+            "Question 5:  How does your past career complement your path in tech?",
           icon: "8️⃣",
         },
         {

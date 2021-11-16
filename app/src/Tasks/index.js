@@ -164,6 +164,7 @@ const MeditationList = ({ meditation }) => (
 const QuoteList = ({ quote: { quotation, author } }) => (
   <span>
     <span id="quotation">&ldquo;{quotation}&rdquo;</span>
+    <br></br>
     <span id="author">&mdash;{author}</span>
   </span>
 );

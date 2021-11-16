@@ -54,20 +54,23 @@ const Home = () => {
 
   return (
     <>
-      <span id="welcome">Hello, {user.given_name} !</span>
+      <span id="welcome">Hello {user.given_name} ,</span>
       <span id="intro">
-        <p>You have no messages from your project leader for today.</p>
         <p>
-          Thank you for leading the team today. This tool should help you to
-          focus on empowering your team.<br></br>
+          You have <b>no messages</b> from your project SEAM today.
+        </p>
+        <p>
+          Thank you for leading the team. This tool should help you to focus on
+          empowering your group.<br></br>
           <br></br>
-          Use the Dashboard to create your message to your team. <br></br>
-          <br></br>Use the Guide to walk you through leading the discussions
-          today.
+          Use the <b>Dashboard</b> to create your schedule and message that you
+          send to your team. <br></br>
+          <br></br>Use the <b>Guide</b> to walk you through leading the
+          discussions.
         </p>
       </span>
       <span id="goodbye">
-        Here's to a day filled with courage, clarity and compassion!
+        Here's to a day filled with courage, clarity and compassion !
       </span>
     </>
   );

@@ -123,7 +123,7 @@ const DayslayerCheckbox = ({ id, title, icon }) => {
 const MorningGuide = ({ morningguide }) => (
   <ul>
     <span id="calendarlist-date">
-      <MenuBookIcon sx={{ mb: -1, mr: 2 }} />
+      <MenuBookIcon sx={{ mb: -1, mr: 2 }} style={{ fill: "royalblue" }} />
       MORNING STAND-UP GUIDE for{" "}
       <span>
         :&nbsp;&nbsp;
@@ -135,7 +135,10 @@ const MorningGuide = ({ morningguide }) => (
     ))}
     <p>
       <span>
-        <SelfImprovementIcon sx={{ mb: -0.5, mr: 1 }} />
+        <SelfImprovementIcon
+          style={{ fill: "royalblue" }}
+          sx={{ mb: -0.5, mr: 1 }}
+        />
         Meditation Guide &nbsp;
         <a href={"https://youtu.be/SEfs5TJZ6Nk"} target="_blank">
           (full-screen link):
@@ -160,7 +163,7 @@ const MorningGuide = ({ morningguide }) => (
 const CodeGuide = ({ codeguide }) => (
   <ul>
     <span id="calendarlist-date">
-      <MenuBookIcon sx={{ mb: -1, mr: 2 }} />
+      <MenuBookIcon sx={{ mb: -1, mr: 2 }} style={{ fill: "royalblue" }} />
       CODE CHALLENGE GUIDE for
       <span>
         :&nbsp;&nbsp;
@@ -172,7 +175,10 @@ const CodeGuide = ({ codeguide }) => (
     ))}
     <p>
       <span>
-        <FolderSharedIcon sx={{ mb: -0.5, mr: 1 }} />
+        <FolderSharedIcon
+          sx={{ mb: -0.5, mr: 1 }}
+          style={{ fill: "royalblue" }}
+        />
         <a
           href={
             "https://docs.google.com/spreadsheets/d/1K0X9jcksJpjX6SHI-wbiRuX3-wPNbIlDp0eQytP1dPY/edit#gid=0"
@@ -190,7 +196,7 @@ const CodeGuide = ({ codeguide }) => (
 const WrapUpGuide = ({ wrapupguide }) => (
   <ul>
     <span id="calendarlist-date">
-      <MenuBookIcon sx={{ mb: -1, mr: 2 }} />
+      <MenuBookIcon sx={{ mb: -1, mr: 2 }} style={{ fill: "royalblue" }} />
       DAILY WRAP-UP GUIDE for
       <span>
         :&nbsp;&nbsp;
@@ -202,7 +208,10 @@ const WrapUpGuide = ({ wrapupguide }) => (
     ))}
     <p>
       <span>
-        <DescriptionIcon sx={{ mb: -0.5, mr: 1 }} />
+        <DescriptionIcon
+          sx={{ mb: -0.5, mr: 1 }}
+          style={{ fill: "royalblue" }}
+        />
         <a
           href={
             "https://docs.google.com/spreadsheets/d/13zwG6TTaClYG1VLe9xkJAUAsN_yrK7XCdmHQgkUL0Po/edit#gid=0"
@@ -220,7 +229,7 @@ const WrapUpGuide = ({ wrapupguide }) => (
 const SoftSkillsGuide = ({ softskills }) => (
   <ul>
     <span id="calendarlist-date">
-      <MenuBookIcon sx={{ mb: -1, mr: 2 }} />
+      <MenuBookIcon sx={{ mb: -1, mr: 2 }} style={{ fill: "royalblue" }} />
       SOFT SKILL DAY DISCUSSION GUIDE for
       <span>
         :&nbsp;&nbsp;
@@ -236,7 +245,7 @@ const SoftSkillsGuide = ({ softskills }) => (
 const InterviewGuide = ({ interview }) => (
   <ul>
     <span id="calendarlist-date">
-      <MenuBookIcon sx={{ mb: -1, mr: 2 }} />
+      <MenuBookIcon sx={{ mb: -1, mr: 2 }} style={{ fill: "royalblue" }} />
       INTERVIEW GUIDE for
       <span>
         :&nbsp;&nbsp;
@@ -248,7 +257,10 @@ const InterviewGuide = ({ interview }) => (
     ))}
     <p>
       <span>
-        <AssessmentIcon sx={{ mb: -0.5, mr: 1 }} />
+        <AssessmentIcon
+          sx={{ mb: -0.5, mr: 1 }}
+          style={{ fill: "royalblue" }}
+        />
         <a
           href={
             "https://docs.google.com/forms/d/e/1FAIpQLScd4uVRaUiPSRGHqvBSzFmFekrSW2BFeySquldEymWwbyIffw/viewform"
