@@ -74,9 +74,8 @@ Users should be able to...
 ## **Nice-to-Haves**
 
 1. Make the Step Function Non-Linear to allow a user to enter a multi-step flow at any point.
-2. Have interactive checkmarks that mark-off each item in guide.
+2. Management Panel to Control Automated Features.
 3. Re-Factoring of Information for Mobile Layout.
-4. Management Panel to Control Automated Features.
 
 #
 

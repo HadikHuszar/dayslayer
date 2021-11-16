@@ -271,7 +271,7 @@ export default function VerticalLinearStepper2({
 
   return (
     <Box sx={{ maxWidth: 750, ml: 10 }}>
-      <Stepper activeStep={activeStep} orientation="vertical">
+      <Stepper nonLinear activeStep={activeStep} orientation="vertical">
         {steps.map((step, index) => (
           <Step key={step.label}>
             <StepLabel
@@ -317,7 +317,8 @@ export default function VerticalLinearStepper2({
                     {index === steps.length - 1 ? "Finish" : "Continue"}
                   </Button>
                   <Button
-                    disabled={index === 0}
+                    // disabled={index === 0}
+                    disabled={activeStep === 0}
                     onClick={handleBack}
                     sx={{ mt: 0, mr: 1 }}
                   >
