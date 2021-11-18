@@ -6,7 +6,7 @@
 
 [View DaySlayer™ Website](https://www.dayslayer.today/)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sub>\*_(Project information, including data schema, user-flow and wireframe.)_</sub>
 
-[View DaySlayer™ Walkthrough Video](https://static.wixstatic.com/media/22d03e_6a45f5059129474d9673123cc8e47bd3f000.jpg/v1/fill/w_640,h_360,al_c,q_80,usm_0.33_1.00_0.00/22d03e_6a45f5059129474d9673123cc8e47bd3f000.webp)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sub>\*_(Walkthrough of DaySlayer App.)_</sub>
+[View DaySlayer™ Walkthrough Video](https://video.wixstatic.com/video/22d03e_6a45f5059129474d9673123cc8e47bd3/480p/mp4/file.mp4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sub>\*_(Walkthrough of DaySlayer App.)_</sub>
 
 #
 
