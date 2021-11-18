@@ -22,7 +22,7 @@ DaySlayer™ is a team lead app designed to make leading a team simple. <br><br>
 
 which the user can then copy and paste into the user's preferred messaging mechanism.
 
-It also provides the user with guides to lead the team meetings required for the day..
+It also provides the user with guides to lead the team meetings required for the day.
 <br><br><br><br>
 
 # **To Use**
