@@ -15,7 +15,6 @@ router.get("/", async (request, response) => {
     })
     .then((res) => {
       const initialAuth0AccessToken = res.data.access_token;
-      // console.log("initialAuth0AccessToken", `Bearer ${initialAuth0AccessToken}`);
 
       axios
         .get(
