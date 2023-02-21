@@ -44,23 +44,20 @@ const Guides = () => {
     !loading && loadTasks();
   }, [loading, loadTasks]);
 
-  console.log("currentGuide", currentGuide);
-
   const renderCurrentGuide = (isSelected) => {
-    if (!currentGuide) {
-      return null;
-    }
-
-    if (currentGuide === GuideType.MORNING) {
-      return <MorningGuide morningguide={morningguide} />;
-    } else if (currentGuide === GuideType.CODE) {
-      return <CodeGuide codeguide={codeguide} />;
-    } else if (currentGuide === GuideType.WRAPUP) {
-      return <WrapUpGuide wrapupguide={wrapupguide} />;
-    } else if (currentGuide === GuideType.SOFTSKILLS) {
-      return <SoftSkillsGuide softskills={softskills} />;
-    } else if (currentGuide === GuideType.INTERVIEW) {
-      return <InterviewGuide interview={interview} />;
+    switch (currentGuide){
+      case GuideType.MORNING:
+          return <MorningGuide morningguide={morningguide} />;
+      case GuideType.CODE:
+          return <CodeGuide codeguide={codeguide} />;
+      case GuideType.WRAPUP:
+          return <WrapUpGuide wrapupguide={wrapupguide} />;
+      case GuideType.SOFTSKILLS:
+          return <SoftSkillsGuide softskills={softskills} />;
+      case GuideType.INTERVIEW:
+          return <InterviewGuide interview={interview} />;
+      default:
+          return null
     }
   };
 
@@ -88,7 +85,6 @@ const Guides = () => {
         <section id="tasks-container">
           <span id="tasks-container-toolslist">
             {renderCurrentGuide()}
-            {/* <AddTask {...{ addTask }} /> */}
           </span>
         </section>
       </div>
@@ -104,11 +100,11 @@ const DayslayerCheckbox = ({ id, title, icon }) => {
   }, [isChecked]);
 
   const selectedClassName = React.useMemo(() => {
-    let klassname = "calendarlist-title";
+    let className = "calendarlist-title";
     if (isChecked) {
-      klassname += " selected";
+      className += " selected";
     }
-    return klassname;
+    return className;
   }, [isChecked]);
 
   return (
@@ -122,17 +118,7 @@ const DayslayerCheckbox = ({ id, title, icon }) => {
 
 const MorningGuide = ({ morningguide }) => (
   <ul>
-    <span id="calendarlist-date">
-      <MenuBookIcon sx={{ mb: -1, mr: 2 }} style={{ fill: "royalblue" }} />
-      MORNING STAND-UP GUIDE for{" "}
-      <span>
-        :&nbsp;&nbsp;
-        {new Date().toLocaleDateString("en-US", "long")}
-      </span>
-    </span>
-    {morningguide.map(({ id, title, start, end, icon, link }, index) => (
-      <DayslayerCheckbox key={index} id={id} title={title} icon={icon} />
-    ))}
+    <GuideHeader label={"MORNING STAND-UP GUIDE for"} checkboxItems={morningguide} />
     <p>
       <span>
         <SelfImprovementIcon
@@ -162,17 +148,7 @@ const MorningGuide = ({ morningguide }) => (
 
 const CodeGuide = ({ codeguide }) => (
   <ul>
-    <span id="calendarlist-date">
-      <MenuBookIcon sx={{ mb: -1, mr: 2 }} style={{ fill: "royalblue" }} />
-      CODE CHALLENGE GUIDE for
-      <span>
-        :&nbsp;&nbsp;
-        {new Date().toLocaleDateString("en-US", "long")}
-      </span>
-    </span>
-    {codeguide.map(({ id, title, date, start, end, icon }, index) => (
-      <DayslayerCheckbox key={index} id={id} title={title} icon={icon} />
-    ))}
+    <GuideHeader label={"CODE CHALLENGE GUIDE for"} checkboxItems={codeguide} />
     <p>
       <span>
         <FolderSharedIcon
@@ -195,17 +171,7 @@ const CodeGuide = ({ codeguide }) => (
 
 const WrapUpGuide = ({ wrapupguide }) => (
   <ul>
-    <span id="calendarlist-date">
-      <MenuBookIcon sx={{ mb: -1, mr: 2 }} style={{ fill: "royalblue" }} />
-      DAILY WRAP-UP GUIDE for
-      <span>
-        :&nbsp;&nbsp;
-        {new Date().toLocaleDateString("en-US", "long")}
-      </span>
-    </span>
-    {wrapupguide.map(({ id, title, icon }, index) => (
-      <DayslayerCheckbox key={index} id={id} title={title} icon={icon} />
-    ))}
+    <GuideHeader label={"DAILY WRAP-UP GUIDE for"} checkboxItems={wrapupguide} />
     <p>
       <span>
         <DescriptionIcon
@@ -228,33 +194,13 @@ const WrapUpGuide = ({ wrapupguide }) => (
 
 const SoftSkillsGuide = ({ softskills }) => (
   <ul>
-    <span id="calendarlist-date">
-      <MenuBookIcon sx={{ mb: -1, mr: 2 }} style={{ fill: "royalblue" }} />
-      SOFT SKILL DAY DISCUSSION GUIDE for
-      <span>
-        :&nbsp;&nbsp;
-        {new Date().toLocaleDateString("en-US", "long")}
-      </span>
-    </span>
-    {softskills.map(({ id, title, icon, link }, index) => (
-      <DayslayerCheckbox key={index} id={id} title={title} icon={icon} />
-    ))}
+    <GuideHeader label={"SOFT SKILL DAY DISCUSSION GUIDE for"} checkboxItems={softskills} />
   </ul>
 );
 
 const InterviewGuide = ({ interview }) => (
   <ul>
-    <span id="calendarlist-date">
-      <MenuBookIcon sx={{ mb: -1, mr: 2 }} style={{ fill: "royalblue" }} />
-      INTERVIEW GUIDE for
-      <span>
-        :&nbsp;&nbsp;
-        {new Date().toLocaleDateString("en-US", "long")}
-      </span>
-    </span>
-    {interview.map(({ id, title, icon }, index) => (
-      <DayslayerCheckbox key={index} id={id} title={title} icon={icon} />
-    ))}
+    <GuideHeader label={"INTERVIEW GUIDE for"} checkboxItems={interview} />
     <p>
       <span>
         <AssessmentIcon
@@ -274,6 +220,24 @@ const InterviewGuide = ({ interview }) => (
     </p>
   </ul>
 );
+
+const GuideHeader = ({ label, checkboxItems  }) => {
+    return (
+      <>
+         <span id="calendarlist-date">
+          <MenuBookIcon sx={{ mb: -1, mr: 2 }} style={{ fill: "royalblue" }} />
+          {label}
+          <span>
+            :&nbsp;&nbsp;
+            {new Date().toLocaleDateString("en-US", "long")}
+          </span>
+        </span>
+        {checkboxItems.map(({ id, title, icon }, index) => (
+          <DayslayerCheckbox key={index} id={id} title={title} icon={icon} />
+        ))}
+      </>
+    )
+}
 
 const TaskList = ({ tasks, deleteTask }) => (
   <ul className={styles.list}>
@@ -307,7 +271,7 @@ const AddTask = ({ addTask }) => {
   };
 
   return (
-    <form {...{ onSubmit }}>
+    <form onSubmit={onSubmit}>
       <label>
         New Item:
         <input onChange={(e) => setTask(e.currentTarget.value)} value={task} />
