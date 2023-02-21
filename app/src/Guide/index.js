@@ -125,11 +125,10 @@ const MorningGuide = ({ morningguide }) => (
           style={{ fill: "royalblue" }}
           sx={{ mb: -0.5, mr: 1 }}
         />
-        Meditation Guide &nbsp;
+        Meditation Guide
         <a href={"https://youtu.be/SEfs5TJZ6Nk"} target="_blank">
           (full-screen link):
         </a>
-        &nbsp;&nbsp;
       </span>
 
       <iframe
@@ -163,7 +162,6 @@ const CodeGuide = ({ codeguide }) => (
         >
           Group Sharing Tracker
         </a>
-        &nbsp;&nbsp;
       </span>
     </p>
   </ul>
@@ -186,7 +184,6 @@ const WrapUpGuide = ({ wrapupguide }) => (
         >
           Retro Form
         </a>
-        &nbsp;&nbsp;
       </span>
     </p>
   </ul>
@@ -215,7 +212,6 @@ const InterviewGuide = ({ interview }) => (
         >
           Weekly Survey
         </a>
-        &nbsp;&nbsp;
       </span>
     </p>
   </ul>
@@ -228,7 +224,6 @@ const GuideHeader = ({ label, checkboxItems  }) => {
           <MenuBookIcon sx={{ mb: -1, mr: 2 }} style={{ fill: "royalblue" }} />
           {label}
           <span>
-            :&nbsp;&nbsp;
             {new Date().toLocaleDateString("en-US", "long")}
           </span>
         </span>
